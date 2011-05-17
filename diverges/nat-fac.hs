@@ -16,4 +16,8 @@ notZero x = case x of
   | Zero -> False
   | Succ a -> True;;
 
-add ::: a:{x: notZero x} -> (b:{y: True} -> {z: notZero z});;
+fac n = case n of
+  | Zero -> Succ Zero
+  | Succ a -> mult n (fac a);;
+
+fac ::: a:{x: True} -> {z: notZero z};;

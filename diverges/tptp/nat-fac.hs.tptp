@@ -1,0 +1,96 @@
+fof(axiom,axiom,
+~(![ Z0 ] : (((Z0 = unr) | (((cf(Z0)) & (cf(true))) & (true != false))) => ((app(fac,Z0) = unr) | (((cf(app(fac,Z0))) & (cf(app(notzero,app(fac,Z0))))) & (app(notzero,app(fac,Z0)) != false)))))
+).
+fof(axiom,axiom,
+![ Zp0 ] : (((Zp0 = unr) | (((cf(Zp0)) & (cf(true))) & (true != false))) => ((app(facp,Zp0) = unr) | (((cf(app(facp,Zp0))) & (cf(app(notzero,app(facp,Zp0))))) & (app(notzero,app(facp,Zp0)) != false))))
+).
+fof(axiom,axiom,
+![ A ] : (![ B ] : (![ Zdef1 ] : ((A = zero) => (app(app(add,A),B) = B))))
+).
+fof(axiom,axiom,
+![ A ] : (![ B ] : (![ Zdef1 ] : ((A = app(succ,Zdef1)) => (app(app(add,A),B) = app(succ,app(app(add,Zdef1),B))))))
+).
+fof(axiom,axiom,
+![ A ] : (![ B ] : ((A = bad) => (app(app(add,A),B) = bad)))
+).
+fof(axiom,axiom,
+![ A ] : (![ B ] : (((A != bad) & ((($true) & (A != zero)) & (A != app(succ,app(sel_1_succ,A))))) => (app(app(add,A),B) = unr)))
+).
+fof(axiom,axiom,
+![ N ] : (![ Zdef1 ] : ((N = zero) => (app(fac,N) = app(succ,zero))))
+).
+fof(axiom,axiom,
+![ N ] : (![ Zdef1 ] : ((N = app(succ,Zdef1)) => (app(fac,N) = app(app(mult,N),app(facp,Zdef1)))))
+).
+fof(axiom,axiom,
+![ N ] : ((N = bad) => (app(fac,N) = bad))
+).
+fof(axiom,axiom,
+![ N ] : (((N != bad) & ((($true) & (N != zero)) & (N != app(succ,app(sel_1_succ,N))))) => (app(fac,N) = unr))
+).
+fof(axiom,axiom,
+![ A ] : (![ B ] : (![ Zdef1 ] : ((A = zero) => (app(app(mult,A),B) = zero))))
+).
+fof(axiom,axiom,
+![ A ] : (![ B ] : (![ Zdef1 ] : ((A = app(succ,Zdef1)) => (app(app(mult,A),B) = app(app(add,app(app(mult,Zdef1),B)),B)))))
+).
+fof(axiom,axiom,
+![ A ] : (![ B ] : ((A = bad) => (app(app(mult,A),B) = bad)))
+).
+fof(axiom,axiom,
+![ A ] : (![ B ] : (((A != bad) & ((($true) & (A != zero)) & (A != app(succ,app(sel_1_succ,A))))) => (app(app(mult,A),B) = unr)))
+).
+fof(axiom,axiom,
+![ X ] : (![ Zdef1 ] : ((X = zero) => (app(notzero,X) = false)))
+).
+fof(axiom,axiom,
+![ X ] : (![ Zdef1 ] : ((X = app(succ,Zdef1)) => (app(notzero,X) = true)))
+).
+fof(axiom,axiom,
+![ X ] : ((X = bad) => (app(notzero,X) = bad))
+).
+fof(axiom,axiom,
+![ X ] : (((X != bad) & ((($true) & (X != zero)) & (X != app(succ,app(sel_1_succ,X))))) => (app(notzero,X) = unr))
+).
+fof(axiom,axiom,
+false != true
+).
+fof(axiom,axiom,
+cf(true)
+).
+fof(axiom,axiom,
+cf(false)
+).
+fof(axiom,axiom,
+true != unr
+).
+fof(axiom,axiom,
+false != unr
+).
+fof(axiom,axiom,
+![ D_1 ] : (D_1 = app(sel_1_succ,app(succ,D_1)))
+).
+fof(axiom,axiom,
+![ D2_1 ] : (app(succ,D2_1) != zero)
+).
+fof(axiom,axiom,
+cf(zero)
+).
+fof(axiom,axiom,
+![ D5_1 ] : ((cf(app(succ,D5_1))) <=> (($true) & (cf(D5_1))))
+).
+fof(axiom,axiom,
+zero != unr
+).
+fof(axiom,axiom,
+succ != unr
+).
+fof(axiom,axiom,
+![ F ] : (![ X ] : (((cf(X)) & (cf(F))) => (cf(app(F,X)))))
+).
+fof(axiom,axiom,
+~(cf(bad))
+).
+fof(axiom,axiom,
+cf(unr)
+).

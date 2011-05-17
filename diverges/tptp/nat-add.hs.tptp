@@ -1,0 +1,72 @@
+fof(axiom,axiom,
+~(![ Z0 ] : (((Z0 = unr) | (((cf(Z0)) & (cf(app(notzero,Z0)))) & (app(notzero,Z0) != false))) => (![ Z1 ] : (((Z1 = unr) | (((cf(Z1)) & (cf(true))) & (true != false))) => ((app(app(add,Z0),Z1) = unr) | (((cf(app(app(add,Z0),Z1))) & (cf(app(notzero,app(app(add,Z0),Z1))))) & (app(notzero,app(app(add,Z0),Z1)) != false)))))))
+).
+fof(axiom,axiom,
+![ Zp0 ] : (((Zp0 = unr) | (((cf(Zp0)) & (cf(app(notzero,Zp0)))) & (app(notzero,Zp0) != false))) => (![ Zp1 ] : (((Zp1 = unr) | (((cf(Zp1)) & (cf(true))) & (true != false))) => ((app(app(addp,Zp0),Zp1) = unr) | (((cf(app(app(addp,Zp0),Zp1))) & (cf(app(notzero,app(app(addp,Zp0),Zp1))))) & (app(notzero,app(app(addp,Zp0),Zp1)) != false))))))
+).
+fof(axiom,axiom,
+![ A ] : (![ B ] : (![ Zdef1 ] : ((A = zero) => (app(app(add,A),B) = B))))
+).
+fof(axiom,axiom,
+![ A ] : (![ B ] : (![ Zdef1 ] : ((A = app(succ,Zdef1)) => (app(app(add,A),B) = app(succ,app(app(addp,Zdef1),B))))))
+).
+fof(axiom,axiom,
+![ A ] : (![ B ] : ((A = bad) => (app(app(add,A),B) = bad)))
+).
+fof(axiom,axiom,
+![ A ] : (![ B ] : (((A != bad) & ((($true) & (A != zero)) & (A != app(succ,app(sel_1_succ,A))))) => (app(app(add,A),B) = unr)))
+).
+fof(axiom,axiom,
+![ X ] : (![ Zdef1 ] : ((X = zero) => (app(notzero,X) = false)))
+).
+fof(axiom,axiom,
+![ X ] : (![ Zdef1 ] : ((X = app(succ,Zdef1)) => (app(notzero,X) = true)))
+).
+fof(axiom,axiom,
+![ X ] : ((X = bad) => (app(notzero,X) = bad))
+).
+fof(axiom,axiom,
+![ X ] : (((X != bad) & ((($true) & (X != zero)) & (X != app(succ,app(sel_1_succ,X))))) => (app(notzero,X) = unr))
+).
+fof(axiom,axiom,
+false != true
+).
+fof(axiom,axiom,
+cf(true)
+).
+fof(axiom,axiom,
+cf(false)
+).
+fof(axiom,axiom,
+true != unr
+).
+fof(axiom,axiom,
+false != unr
+).
+fof(axiom,axiom,
+![ D_1 ] : (D_1 = app(sel_1_succ,app(succ,D_1)))
+).
+fof(axiom,axiom,
+![ D2_1 ] : (app(succ,D2_1) != zero)
+).
+fof(axiom,axiom,
+cf(zero)
+).
+fof(axiom,axiom,
+![ D5_1 ] : ((cf(app(succ,D5_1))) <=> (($true) & (cf(D5_1))))
+).
+fof(axiom,axiom,
+zero != unr
+).
+fof(axiom,axiom,
+succ != unr
+).
+fof(axiom,axiom,
+![ F ] : (![ X ] : (((cf(X)) & (cf(F))) => (cf(app(F,X)))))
+).
+fof(axiom,axiom,
+~(cf(bad))
+).
+fof(axiom,axiom,
+cf(unr)
+).
