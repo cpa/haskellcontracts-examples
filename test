@@ -1,0 +1,4 @@
+#!/bin/sh
+
+./Script $1;
+./equinox $1.tptp;

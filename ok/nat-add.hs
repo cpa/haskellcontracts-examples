@@ -12,8 +12,4 @@ notZero x = case x of
   | Zero -> False
   | Succ a -> True;;
 
-not x = case x of
-  | Zero -> True
-  | Succ a -> False;;
-
-add ::: a:{x: not (notZero x)} -> b:{y: not (notZero x)} -> {z: not (notZero x)};;
+add ::: a:{x: True} -> (b:{y: True} -> {z: True});;
