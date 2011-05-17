@@ -1,8 +1,8 @@
 fof(axiom,axiom,
-~(![ Z0 ] : (((Z0 = unr) | (((cf(Z0)) & (cf(app(not,app(notzero,Z0))))) & (app(not,app(notzero,Z0)) != false))) => (![ Z1 ] : (((Z1 = unr) | (((cf(Z1)) & (cf(app(not,app(notzero,x))))) & (app(not,app(notzero,x)) != false))) => ((app(app(add,Z0),Z1) = unr) | (((cf(app(app(add,Z0),Z1))) & (cf(app(not,app(notzero,x))))) & (app(not,app(notzero,x)) != false)))))))
+~(![ Z0 ] : (((Z0 = unr) | (((cf(Z0)) & (cf(true))) & (true != false))) => (![ Z1 ] : (((Z1 = unr) | (((cf(Z1)) & (cf(true))) & (true != false))) => ((app(app(add,Z0),Z1) = unr) | (((cf(app(app(add,Z0),Z1))) & (cf(true))) & (true != false)))))))
 ).
 fof(axiom,axiom,
-![ Zp0 ] : (((Zp0 = unr) | (((cf(Zp0)) & (cf(app(not,app(notzero,Zp0))))) & (app(not,app(notzero,Zp0)) != false))) => (![ Zp1 ] : (((Zp1 = unr) | (((cf(Zp1)) & (cf(app(not,app(notzero,x))))) & (app(not,app(notzero,x)) != false))) => ((app(app(addp,Zp0),Zp1) = unr) | (((cf(app(app(addp,Zp0),Zp1))) & (cf(app(not,app(notzero,x))))) & (app(not,app(notzero,x)) != false))))))
+![ Zp0 ] : (((Zp0 = unr) | (((cf(Zp0)) & (cf(true))) & (true != false))) => (![ Zp1 ] : (((Zp1 = unr) | (((cf(Zp1)) & (cf(true))) & (true != false))) => ((app(app(addp,Zp0),Zp1) = unr) | (((cf(app(app(addp,Zp0),Zp1))) & (cf(true))) & (true != false))))))
 ).
 fof(axiom,axiom,
 ![ A ] : (![ B ] : (![ Zdef1 ] : ((A = zero) => (app(app(add,A),B) = B))))
@@ -15,18 +15,6 @@ fof(axiom,axiom,
 ).
 fof(axiom,axiom,
 ![ A ] : (![ B ] : (((A != bad) & ((($true) & (A != zero)) & (A != app(succ,app(sel_1_succ,A))))) => (app(app(add,A),B) = unr)))
-).
-fof(axiom,axiom,
-![ X ] : (![ Zdef1 ] : ((X = zero) => (app(not,X) = true)))
-).
-fof(axiom,axiom,
-![ X ] : (![ Zdef1 ] : ((X = app(succ,Zdef1)) => (app(not,X) = false)))
-).
-fof(axiom,axiom,
-![ X ] : ((X = bad) => (app(not,X) = bad))
-).
-fof(axiom,axiom,
-![ X ] : (((X != bad) & ((($true) & (X != zero)) & (X != app(succ,app(sel_1_succ,X))))) => (app(not,X) = unr))
 ).
 fof(axiom,axiom,
 ![ X ] : (![ Zdef1 ] : ((X = zero) => (app(notzero,X) = false)))
