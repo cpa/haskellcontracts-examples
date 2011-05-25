@@ -16,4 +16,4 @@ notZero x = case x of
   | Zero -> False
   | Succ a -> True;;
 
-multi ::: a:{x: notZero x} -> (b:{y: notZeo y} -> {z: notZero z});;
+multi ::: a:{x: True} -> (b:{y: True} -> {z: True});;

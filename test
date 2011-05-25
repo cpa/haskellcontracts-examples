@@ -2,5 +2,3 @@
 
 ./Script $1;
 ./equinox $1.tptp;
-rm $1.tptp;
-rm model;

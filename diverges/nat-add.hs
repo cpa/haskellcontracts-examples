@@ -8,12 +8,8 @@ add a b = case a of
   | Zero -> b
   | Succ x -> Succ (add x b);;
     
-notZero x = case x of
-  | Zero -> False
-  | Succ a -> True;;
-
-not x = case x of
+isZero x = case x of
   | Zero -> True
   | Succ a -> False;;
 
-add ::: a:{x: not (notZero x)} -> b:{y: not (notZero y)} -> {z: not (notZero z)};;
+add ::: a:{x: isZero x} -> b:{y: isZero y} -> {z: isZero z};;
