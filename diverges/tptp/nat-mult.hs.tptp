@@ -1,44 +1,44 @@
 fof(axiom,axiom,
-~(![ Z0 ] : (((Z0 = unr) | (((cf(Z0)) & (cf(app(notzero,Z0)))) & (app(notzero,Z0) != false))) => (![ Z1 ] : (((Z1 = unr) | (((cf(Z1)) & (cf(app(notzeo,Z1)))) & (app(notzeo,Z1) != false))) => ((app(app(multi,Z0),Z1) = unr) | (((cf(app(app(multi,Z0),Z1))) & (cf(app(notzero,app(app(multi,Z0),Z1))))) & (app(notzero,app(app(multi,Z0),Z1)) != false)))))))
+~(! [Z0]  : (((Z0 = unr | (cf(Z0) & bad != true & true != false))) => (! [Z1]  : (((Z1 = unr | (cf(Z1) & bad != true & true != false))) => ((app(app(multi,Z0),Z1) = unr | (cf(app(app(multi,Z0),Z1)) & bad != true & true != false)))))))
 ).
 fof(axiom,axiom,
-![ Zp0 ] : (((Zp0 = unr) | (((cf(Zp0)) & (cf(app(notzero,Zp0)))) & (app(notzero,Zp0) != false))) => (![ Zp1 ] : (((Zp1 = unr) | (((cf(Zp1)) & (cf(app(notzeo,Zp1)))) & (app(notzeo,Zp1) != false))) => ((app(app(multip,Zp0),Zp1) = unr) | (((cf(app(app(multip,Zp0),Zp1))) & (cf(app(notzero,app(app(multip,Zp0),Zp1))))) & (app(notzero,app(app(multip,Zp0),Zp1)) != false))))))
+! [ZP0]  : (((ZP0 = unr | (cf(ZP0) & bad != true & true != false))) => (! [ZP1]  : (((ZP1 = unr | (cf(ZP1) & bad != true & true != false))) => ((app(app(multip,ZP0),ZP1) = unr | (cf(app(app(multip,ZP0),ZP1)) & bad != true & true != false))))))
 ).
 fof(axiom,axiom,
-![ A ] : (![ B ] : (![ Zdef1 ] : ((A = zero) => (app(app(add,A),B) = B))))
+! [A,B,ZDEF1]  : ((A = zero) => (app(app(add,A),B) = $weak(B)))
 ).
 fof(axiom,axiom,
-![ A ] : (![ B ] : (![ Zdef1 ] : ((A = app(succ,Zdef1)) => (app(app(add,A),B) = app(succ,app(app(add,Zdef1),B))))))
+! [A,B,ZDEF1]  : ((A = app(succ,ZDEF1)) => (app(app(add,A),B) = $weak(app(succ,app(app(add,ZDEF1),B)))))
 ).
 fof(axiom,axiom,
-![ A ] : (![ B ] : ((A = bad) => (app(app(add,A),B) = bad)))
+! [A,B,ZDEF1]  : ((A = bad) => (app(app(add,A),B) = bad))
 ).
 fof(axiom,axiom,
-![ A ] : (![ B ] : (((A != bad) & ((($true) & (A != zero)) & (A != app(succ,app(sel_1_succ,A))))) => (app(app(add,A),B) = unr)))
+! [A,B,ZDEF1]  : (((A != bad & A != $weak(zero) & A != $weak(app(succ,app(sel_1_succ,A))))) => (app(app(add,A),B) = unr))
 ).
 fof(axiom,axiom,
-![ A ] : (![ B ] : (![ Zdef1 ] : ((A = zero) => (app(app(mult,A),B) = zero))))
+! [A,B,ZDEF1]  : ((A = zero) => (app(app(mult,A),B) = $weak(zero)))
 ).
 fof(axiom,axiom,
-![ A ] : (![ B ] : (![ Zdef1 ] : ((A = app(succ,Zdef1)) => (app(app(mult,A),B) = app(app(add,app(app(mult,Zdef1),B)),B)))))
+! [A,B,ZDEF1]  : ((A = app(succ,ZDEF1)) => (app(app(mult,A),B) = $weak(app(app(add,app(app(mult,ZDEF1),B)),B))))
 ).
 fof(axiom,axiom,
-![ A ] : (![ B ] : ((A = bad) => (app(app(mult,A),B) = bad)))
+! [A,B,ZDEF1]  : ((A = bad) => (app(app(mult,A),B) = bad))
 ).
 fof(axiom,axiom,
-![ A ] : (![ B ] : (((A != bad) & ((($true) & (A != zero)) & (A != app(succ,app(sel_1_succ,A))))) => (app(app(mult,A),B) = unr)))
+! [A,B,ZDEF1]  : (((A != bad & A != $weak(zero) & A != $weak(app(succ,app(sel_1_succ,A))))) => (app(app(mult,A),B) = unr))
 ).
 fof(axiom,axiom,
-![ X ] : (![ Zdef1 ] : ((X = zero) => (app(notzero,X) = false)))
+! [X,ZDEF1]  : ((X = zero) => (app(notzero,X) = $weak(false)))
 ).
 fof(axiom,axiom,
-![ X ] : (![ Zdef1 ] : ((X = app(succ,Zdef1)) => (app(notzero,X) = true)))
+! [X,ZDEF1]  : ((X = app(succ,ZDEF1)) => (app(notzero,X) = $weak(true)))
 ).
 fof(axiom,axiom,
-![ X ] : ((X = bad) => (app(notzero,X) = bad))
+! [X,ZDEF1]  : ((X = bad) => (app(notzero,X) = bad))
 ).
 fof(axiom,axiom,
-![ X ] : (((X != bad) & ((($true) & (X != zero)) & (X != app(succ,app(sel_1_succ,X))))) => (app(notzero,X) = unr))
+! [X,ZDEF1]  : (((X != bad & X != $weak(zero) & X != $weak(app(succ,app(sel_1_succ,X))))) => (app(notzero,X) = unr))
 ).
 fof(axiom,axiom,
 false != true
@@ -56,25 +56,25 @@ fof(axiom,axiom,
 false != unr
 ).
 fof(axiom,axiom,
-![ D_1 ] : (D_1 = app(sel_1_succ,app(succ,D_1)))
+! [D_1]  : (D_1 = app(sel_1_succ,app(succ,D_1)))
 ).
 fof(axiom,axiom,
-![ D2_1 ] : (app(succ,D2_1) != zero)
+! [D2_1]  : (app(succ,D2_1) != zero)
 ).
 fof(axiom,axiom,
 cf(zero)
 ).
 fof(axiom,axiom,
-![ D5_1 ] : ((cf(app(succ,D5_1))) <=> (($true) & (cf(D5_1))))
+! [D5_1]  : ((cf(app(succ,D5_1))) <=> ((cf(D5_1))))
 ).
 fof(axiom,axiom,
 zero != unr
 ).
 fof(axiom,axiom,
-succ != unr
+! [D7_1]  : ((app(succ,D7_1) = unr) => ((unr = D7_1)))
 ).
 fof(axiom,axiom,
-![ F ] : (![ X ] : (((cf(X)) & (cf(F))) => (cf(app(F,X)))))
+! [F,X]  : (((cf(X) & cf(F))) => (cf(app(F,X))))
 ).
 fof(axiom,axiom,
 ~(cf(bad))

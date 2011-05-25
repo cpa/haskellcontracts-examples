@@ -1,32 +1,32 @@
 fof(axiom,axiom,
-~(![ Z0 ] : (((Z0 = unr) | (((cf(Z0)) & (cf(app(notnil,Z0)))) & (app(notnil,Z0) != false))) => ((app(head,Z0) = unr) | (((cf(app(head,Z0))) & (cf(true))) & (true != false)))))
+~(! [Z0]  : (((Z0 = unr | (cf(Z0) & bad != app(notnil,Z0) & app(notnil,Z0) != false))) => ((app(head,Z0) = unr | (cf(app(head,Z0)) & bad != true & true != false)))))
 ).
 fof(axiom,axiom,
-![ Zp0 ] : (((Zp0 = unr) | (((cf(Zp0)) & (cf(app(notnil,Zp0)))) & (app(notnil,Zp0) != false))) => ((app(headp,Zp0) = unr) | (((cf(app(headp,Zp0))) & (cf(true))) & (true != false))))
+! [ZP0]  : (((ZP0 = unr | (cf(ZP0) & bad != app(notnil,ZP0) & app(notnil,ZP0) != false))) => ((app(headp,ZP0) = unr | (cf(app(headp,ZP0)) & bad != true & true != false))))
 ).
 fof(axiom,axiom,
-![ X ] : (![ Zdef1 ] : (![ Zdef2 ] : ((X = nil) => (app(head,X) = bad))))
+! [X,ZDEF1,ZDEF2]  : ((X = nil) => (app(head,X) = $weak(bad)))
 ).
 fof(axiom,axiom,
-![ X ] : (![ Zdef1 ] : (![ Zdef2 ] : ((X = app(app(cons,Zdef1),Zdef2)) => (app(head,X) = Zdef1))))
+! [X,ZDEF1,ZDEF2]  : ((X = app(app(cons,ZDEF1),ZDEF2)) => (app(head,X) = $weak(ZDEF1)))
 ).
 fof(axiom,axiom,
-![ X ] : ((X = bad) => (app(head,X) = bad))
+! [X,ZDEF1,ZDEF2]  : ((X = bad) => (app(head,X) = bad))
 ).
 fof(axiom,axiom,
-![ X ] : (((X != bad) & ((($true) & (X != nil)) & (X != app(app(cons,app(sel_1_cons,X)),app(sel_2_cons,X))))) => (app(head,X) = unr))
+! [X,ZDEF1,ZDEF2]  : (((X != bad & X != $weak(nil) & X != $weak(app(app(cons,app(sel_1_cons,X)),app(sel_2_cons,X))))) => (app(head,X) = unr))
 ).
 fof(axiom,axiom,
-![ X ] : (![ Zdef1 ] : (![ Zdef2 ] : ((X = nil) => (app(notnil,X) = false))))
+! [X,ZDEF1,ZDEF2]  : ((X = nil) => (app(notnil,X) = $weak(false)))
 ).
 fof(axiom,axiom,
-![ X ] : (![ Zdef1 ] : (![ Zdef2 ] : ((X = app(app(cons,Zdef1),Zdef2)) => (app(notnil,X) = true))))
+! [X,ZDEF1,ZDEF2]  : ((X = app(app(cons,ZDEF1),ZDEF2)) => (app(notnil,X) = $weak(true)))
 ).
 fof(axiom,axiom,
-![ X ] : ((X = bad) => (app(notnil,X) = bad))
+! [X,ZDEF1,ZDEF2]  : ((X = bad) => (app(notnil,X) = bad))
 ).
 fof(axiom,axiom,
-![ X ] : (((X != bad) & ((($true) & (X != nil)) & (X != app(app(cons,app(sel_1_cons,X)),app(sel_2_cons,X))))) => (app(notnil,X) = unr))
+! [X,ZDEF1,ZDEF2]  : (((X != bad & X != $weak(nil) & X != $weak(app(app(cons,app(sel_1_cons,X)),app(sel_2_cons,X))))) => (app(notnil,X) = unr))
 ).
 fof(axiom,axiom,
 false != true
@@ -44,28 +44,28 @@ fof(axiom,axiom,
 false != unr
 ).
 fof(axiom,axiom,
-![ D_1 ] : (![ D_2 ] : (D_1 = app(sel_1_cons,app(app(cons,D_1),D_2))))
+! [D_1,D_2]  : (D_1 = app(sel_1_cons,app(app(cons,D_1),D_2)))
 ).
 fof(axiom,axiom,
-![ D_1 ] : (![ D_2 ] : (D_2 = app(sel_2_cons,app(app(cons,D_1),D_2))))
+! [D_1,D_2]  : (D_2 = app(sel_2_cons,app(app(cons,D_1),D_2)))
 ).
 fof(axiom,axiom,
-![ D2_1 ] : (![ D2_2 ] : (app(app(cons,D2_1),D2_2) != nil))
+! [D2_1,D2_2]  : (app(app(cons,D2_1),D2_2) != nil)
 ).
 fof(axiom,axiom,
 cf(nil)
 ).
 fof(axiom,axiom,
-![ D5_1 ] : (![ D5_2 ] : ((cf(app(app(cons,D5_1),D5_2))) <=> ((($true) & (cf(D5_1))) & (cf(D5_2)))))
+! [D5_1,D5_2]  : ((cf(app(app(cons,D5_1),D5_2))) <=> ((cf(D5_1) & cf(D5_2))))
 ).
 fof(axiom,axiom,
 nil != unr
 ).
 fof(axiom,axiom,
-cons != unr
+! [D7_1,D7_2]  : ((app(app(cons,D7_1),D7_2) = unr) => ((unr = D7_1 | unr = D7_2)))
 ).
 fof(axiom,axiom,
-![ F ] : (![ X ] : (((cf(X)) & (cf(F))) => (cf(app(F,X)))))
+! [F,X]  : (((cf(X) & cf(F))) => (cf(app(F,X))))
 ).
 fof(axiom,axiom,
 ~(cf(bad))
