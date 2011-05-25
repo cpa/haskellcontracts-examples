@@ -1,20 +1,20 @@
 fof(axiom,axiom,
-~(! [Z0]  : (((Z0 = unr | (cf(Z0) & bad != app(iszero,Z0) & app(iszero,Z0) != false))) => (! [Z1]  : (((Z1 = unr | (cf(Z1) & bad != app(iszero,Z1) & app(iszero,Z1) != false))) => ((app(app(add,Z0),Z1) = unr | (cf(app(app(add,Z0),Z1)) & bad != app(iszero,app(app(add,Z0),Z1)) & app(iszero,app(app(add,Z0),Z1)) != false)))))))
+~(! [Z0]  : (((Z0 = unr | (cf(Z0) & bad != app(iszero,Z0) & app(iszero,Z0) != false))) => ((app(f,Z0) = unr | (cf(app(f,Z0)) & bad != true & true != false)))))
 ).
 fof(axiom,axiom,
-! [ZP0]  : (((ZP0 = unr | (cf(ZP0) & bad != app(iszero,ZP0) & app(iszero,ZP0) != false))) => (! [ZP1]  : (((ZP1 = unr | (cf(ZP1) & bad != app(iszero,ZP1) & app(iszero,ZP1) != false))) => ((app(app(addp,ZP0),ZP1) = unr | (cf(app(app(addp,ZP0),ZP1)) & bad != app(iszero,app(app(addp,ZP0),ZP1)) & app(iszero,app(app(addp,ZP0),ZP1)) != false))))))
+! [ZP0]  : (((ZP0 = unr | (cf(ZP0) & bad != app(iszero,ZP0) & app(iszero,ZP0) != false))) => ((app(fp,ZP0) = unr | (cf(app(fp,ZP0)) & bad != true & true != false))))
 ).
 fof(axiom,axiom,
-! [A,B,ZDEF1]  : ((A = zero) => (app(app(add,A),B) = $weak(B)))
+! [X,ZDEF1]  : ((X = zero) => (app(f,X) = $weak(unr)))
 ).
 fof(axiom,axiom,
-! [A,B,ZDEF1]  : ((A = app(succ,ZDEF1)) => (app(app(add,A),B) = $weak(app(succ,app(app(addp,ZDEF1),B)))))
+! [X,ZDEF1]  : ((X = app(succ,ZDEF1)) => (app(f,X) = $weak(bad)))
 ).
 fof(axiom,axiom,
-! [A,B,ZDEF1]  : ((A = bad) => (app(app(add,A),B) = bad))
+! [X,ZDEF1]  : ((X = bad) => (app(f,X) = bad))
 ).
 fof(axiom,axiom,
-! [A,B,ZDEF1]  : (((A != bad & A != $weak(zero) & A != $weak(app(succ,app(sel_1_succ,A))))) => (app(app(add,A),B) = unr))
+! [X,ZDEF1]  : (((X != bad & X != $weak(zero) & X != $weak(app(succ,app(sel_1_succ,X))))) => (app(f,X) = unr))
 ).
 fof(axiom,axiom,
 ! [X,ZDEF1]  : ((X = zero) => (app(iszero,X) = $weak(true)))
@@ -57,9 +57,6 @@ fof(axiom,axiom,
 ).
 fof(axiom,axiom,
 zero != unr
-).
-fof(axiom,axiom,
-succ != unr 
 ).
 fof(axiom,axiom,
 ! [D7_1]  : ((app(succ,D7_1) = unr) => ((unr = D7_1)))
