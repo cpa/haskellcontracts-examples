@@ -1,0 +1,6 @@
+#!/bin/sh
+	
+for f in $1/*.hs; do
+    ./test $f `basename $f .hs`;
+    echo;
+done;
