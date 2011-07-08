@@ -1,5 +1,0 @@
-#!/bin/sh
-
-./Script $1 $2;
-time ./equinox $1.tptp > /dev/null;
-

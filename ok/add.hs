@@ -1,15 +1,11 @@
+data Int = Zero 0
+         | Succ 1;;
+                   
 data Bool = True 0
           | False 0;;
 
-data Nat = Zero 0 
-         | Succ 1;;
-                   
-add a b = case a of
-  | Zero -> b
-  | Succ x -> Succ (add x b);;
+add x y = case x of
+  | Zero -> Zero
+  | Succ a -> Succ (add a y);;
     
-notZero x = case x of
-  | Zero -> False
-  | Succ a -> True;;
-
-add ::: a:{x: True} -> (b:{y: True} -> {z: True});;
+add ::: a:{x:cf(x)} -> b:{y:cf(y)} -> {z:cf(z)};;

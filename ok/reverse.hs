@@ -5,7 +5,7 @@ data Bool = True 0
           | False 0;;
 
 reverse x acc = case x of
-  | Nil -> acc
+  | Nil -> Nil
   | Cons a b -> reverse x (Cons a acc);;
 
-reverse ::: a:{x : True} -> a:{y:True} -> {z:True};;
+reverse ::: a:{x : cf(x)} -> a:{y: cf(y)} -> {z: cf(z)};;

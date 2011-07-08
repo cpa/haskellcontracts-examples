@@ -5,11 +5,11 @@ data Nat = Zero 0
          | Succ 1;;
 
 branch x = case x of
-  | Zero -> UNR
+  | Zero -> Zero
   | Succ y -> BAD;;
 
 iszero x = case x of
   | Zero -> True
   | Succ a -> False;;
 
-branch ::: a:{ x: iszero x } -> {y: True}
+branch ::: a:({ x: iszero x } && { z: cf(z) }) -> {y: cf(y)}
