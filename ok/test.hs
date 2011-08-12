@@ -12,5 +12,5 @@ notzero n flag = case n of
   | Zero -> flag
   | Succ a -> notzero a True;;
 
-f ::: a:{x:cf(x)} -> b:{y:cf(y)} -> {z:cf(z)};;
-notzero ::: a:{x:cf(x)} -> b:{z:cf(z)} -> {y:cf(y)};;
+f ::: CF -> CF -> CF;;
+notzero ::: CF -> CF -> CF;;

@@ -3,4 +3,4 @@ data Bool = False 0
 
 f x = BAD;;
 
-f ::: a:{x:cf(x)} -> {y:cf(y)};;
+f ::: CF -> CF;;

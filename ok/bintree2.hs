@@ -20,6 +20,5 @@ and x y = case x of
   | True -> y
   | False -> False;;
     
--- eq ::: a:{x:cf(x)} -> b:{y:cf(y)} -> {z:cf(z)};;
-isLeaf ::: a:{y:cf(y)} -> {z:cf(z)};;
-and ::: a:{x:cf(x)} -> b:{y:cf(y)} -> {z:cf(z)};;
+isLeaf ::: CF -> CF;;
+and ::: CF -> CF -> CF;;

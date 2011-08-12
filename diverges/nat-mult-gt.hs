@@ -8,9 +8,9 @@ add a b = case a of
   | Zero -> b
   | Succ x -> Succ (add x b);;
   
-multgt a b = case a of
+mult a b = case a of
   | Zero -> Zero
-  | Succ x -> add b (multgt x b);;
+  | Succ x -> add b (mult x b);;
     
 gt x y = case x of
   | Zero -> iszero y
@@ -37,6 +37,9 @@ gt ::: a:{x:True} -> b:{y:True} -> {z:True};;
 aux ::: a:{x:True} -> b:{y:True} -> {z:True};;
 notzero ::: a:{x:True} -> {y:True};;
 
-add ::: CF -> CF -> CF;;
+add  ::: a:{x: True} -> b:{y: True} -> {z: gt z a};;
+add  ::: a:{x: True} -> b:{y: True} -> {z: gt z b};;
+add  ::: a:{x: notzero x} -> b:{y: notzero y} -> {z: gt z a};;
+add  ::: a:{x: notzero x} -> b:{y: notzero y} -> {z: gt z b};;
 
-multgt ::: CF -> CF -> CF;; -- {z: or (gt z a) (gt z b)};;
+mult ::: a:{x: True} -> b:{y: True} -> {z: or (gt z a) (gt z b)};;

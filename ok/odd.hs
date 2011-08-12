@@ -17,6 +17,6 @@ even x = case x of
   | Zero -> True
   | Succ a -> odd a;;
     
-f ::: a:{x:cf(x)} -> {y:cf(y)};;
-odd ::: a:{x:cf(x)} -> {y:cf(y)};;
-even ::: a:{x:cf(x)} -> {y:cf(y)};;
+f ::: CF;;
+odd ::: CF;;
+even ::: CF;;

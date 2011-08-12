@@ -8,5 +8,5 @@ notzero n flag = case n of
   | Zero -> flag
   | Succ a -> notzero a True;;
 
-notzero ::: a:{x:cf(x)} -> b:{y:cf(y)} -> {z:cf(z)};;
+notzero ::: CF -> CF -> CF;;
 

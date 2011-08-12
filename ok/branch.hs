@@ -12,4 +12,4 @@ iszero x = case x of
   | Zero -> True
   | Succ a -> False;;
 
-branch ::: a:({ x: iszero x } && { z: cf(z) }) -> {y: cf(y)}
+branch ::: a:({ x: iszero x }) -> CF;;

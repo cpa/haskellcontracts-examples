@@ -5,5 +5,5 @@ not x = case x of
   | True -> False
   | False -> True;;
 
-not ::: a:{x:cf(x)} -> {y:cf(y)};;
+not ::: CF -> CF;;
 

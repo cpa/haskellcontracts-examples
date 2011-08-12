@@ -7,11 +7,9 @@ data Nat = Zero 0
 add a b = case a of
   | Zero -> b
   | Succ x -> Succ (add x b);;
+    
+isZero x = case x of
+  | Zero -> True
+  | Succ a -> False;;
 
-mult a b = case a of
-  | Zero -> Zero
-  | Succ x -> add (mult x b) b;;
-
-add  ::: CF -> CF -> CF;;
-mult ::: CF -> CF -> CF;;
-
+add ::: a:{x: isZero x} -> b:{y: isZero y} -> {z: isZero z};;

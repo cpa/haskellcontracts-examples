@@ -8,4 +8,4 @@ copy x = case x of
   | Nil -> x
   | Cons a b -> Cons a (copy b);;
 
-copy ::: a:{x : True} -> {z:True};;
+copy ::: CF -> CF;;

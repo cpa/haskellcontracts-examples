@@ -8,4 +8,4 @@ reverse x acc = case x of
   | Nil -> Nil
   | Cons a b -> reverse x (Cons a acc);;
 
-reverse ::: a:{x : cf(x)} -> a:{y: cf(y)} -> {z: cf(z)};;
+reverse ::: CF -> CF -> CF;;
