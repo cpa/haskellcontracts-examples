@@ -6,7 +6,7 @@ What you need
 Directories and files
 =====================
 * ok/ contains examples for which equinox gives the right expected answer. Warning: sometimes it is expected for equinox to hang because the function doesn't satisfy its contract! (see extrasimple.hs)
-* notOk/ contains examples for which equinox diverges (or converges too slowly, who knows?)
+* diverges/ contains examples for which equinox diverges (or converges too slowly, who knows?)
 
 Usage
 =====
