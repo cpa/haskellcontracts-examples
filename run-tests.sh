@@ -15,7 +15,7 @@ run-test () {
     passMsg="$2"
     timeoutMsg="$3"
 
-    "$egsDir"/timeout.sh $TIMEOUT "$CHECK" "$test" -q
+    "$egsDir"/timeout.sh $TIMEOUT "$CHECK" "$test" -q -p
     ret=$?
     printf "%-30s" "$test: "
     if [[ $ret -eq 0 ]]; then
@@ -24,7 +24,7 @@ run-test () {
     elif [[ $ret -eq 124 ]]; then
         echo $timeoutMsg
     else
-        echo FAILED WITH EXIT CODE $ret
+        echo FAILED WITH EXIT CODE $ret "(\"1\" means \"Satisfiable\")"
     fi
 }
 
@@ -60,6 +60,7 @@ if [[ ! -x "$CHECK" ]]; then
     usage
 fi
 
+echo TIMEOUT is $TIMEOUT
 case $1 in
     all) main;;
     just) run-test "$2" "passed" "timed out";;
