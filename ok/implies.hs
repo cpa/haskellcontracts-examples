@@ -1,6 +1,3 @@
-data Bool = True 0
-          | False 0;;
-                     
 and x y = case x of
   | True -> y
   | False -> False;;

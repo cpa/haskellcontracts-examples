@@ -1,11 +1,9 @@
 data Int = Zero 0
          | Succ 1;;
-                   
-data Bool = True 0
-          | False 0;;
 
 add x y = case x of
-  | Zero -> Zero
+  | Zero -> y
   | Succ a -> Succ (add a y);;
     
 add ::: CF;;
+--add ::: CF -> CF -> CF;;
