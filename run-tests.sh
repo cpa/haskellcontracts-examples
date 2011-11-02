@@ -15,7 +15,11 @@ run-test () {
     passMsg="$2"
     timeoutMsg="$3"
 
-    "$egsDir"/timeout.sh $TIMEOUT "$CHECK" "$test" -q -p
+    #z3 spawns many parallel processes and timeout.sh doesn't kill
+    #them all.
+    killall --user `whoami` z3 &>/dev/null
+
+    "$egsDir"/timeout.sh $TIMEOUT "$CHECK" "$test" -q -p # --engine z3
     ret=$?
     printf "%-30s" "$test: "
     if [[ $ret -eq 0 ]]; then
@@ -24,11 +28,16 @@ run-test () {
     elif [[ $ret -eq 124 ]]; then
         echo $timeoutMsg
     else
-        echo FAILED WITH EXIT CODE $ret "(\"1\" means \"Satisfiable\")"
+        echo FAILED WITH EXIT CODE $ret
     fi
 }
 
 main () {
+    echo "Exit codes:"
+    echo "  Equinox: 1 = \"Satisfiable\""
+    echo "  Z3: 1 = error"
+    echo
+
     echo Running tests expected to pass
     echo ==============================
     echo
