@@ -1,6 +1,3 @@
-data Bool = True 0
-          | False 0;;
-
 data Nat = Zero 0
          | Succ 1;;
                                                    

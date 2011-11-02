@@ -1,8 +1,5 @@
 data Int = Zero 0
          | Succ 1;;
-                   
-data Bool = True 0
-          | False 0;;
   
 max a b = case (gt a b) of
   | True -> a

@@ -3,10 +3,7 @@ data Tree = Leaf 0
                     
 data Int = Zero 0
          | Succ 1;;
-                   
-data Bool = True 0
-          | False 0;;
-  
+
 size t = case t of
   | Leaf -> Succ Zero
   | Node l x r -> Succ (add (size l) (size r));;

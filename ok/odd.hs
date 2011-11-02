@@ -1,10 +1,6 @@
 data Int = Zero 0
          | Succ 1;;
                    
-data Bool = True 0
-          | False 0;;
-  
-  
 f x = case odd x of
   | True -> True
   | False -> False;;

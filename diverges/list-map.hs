@@ -1,6 +1,3 @@
-data Bool = True 0
-          | False 0;;
-           
 data List = Nil 0
           | Cons 2;;
            

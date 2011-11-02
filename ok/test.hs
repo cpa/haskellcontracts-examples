@@ -1,9 +1,6 @@
 data Int = Zero 0
          | Succ 1;;
-                   
-data Bool = True 0
-          | False 0;;
-  
+
 f x y n = case notzero n False of
   | True -> x
   | False -> y;;

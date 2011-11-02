@@ -3,9 +3,6 @@ data Tree = Leaf 0
                     
 data Int = Zero 0
          | Succ 1;;
-                   
-data Bool = True 0
-          | False 0;;
   
 height t = case t of
   | Leaf -> Zero
