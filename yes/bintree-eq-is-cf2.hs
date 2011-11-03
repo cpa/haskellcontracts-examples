@@ -1,7 +1,8 @@
+-- Probalby boring, but a more complicated CF example.
 data Tree = Leaf 0
           | Node 2;;
                     
-data Int = Zero 0
+data Nat = Zero 0
          | Succ 1;;
     
 isLeaf t = case t of

@@ -1,3 +1,5 @@
+-- Boring because it's just more CF, and additionally needs CF = CF ->
+-- CF for f.
 data Int = Zero 0
          | Succ 1;;
 

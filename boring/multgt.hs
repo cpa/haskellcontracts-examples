@@ -1,3 +1,6 @@
+-- Boring because 'Any' contracts are boring and 'add' and 'multgt'
+-- are already covered by ../yes/add-is-cf-to-cf-to-cf.hs and
+-- ../yes/mult-is-cf-to-cf-to-cf.hs.
 data Nat = Zero 0 
          | Succ 1;;
                    

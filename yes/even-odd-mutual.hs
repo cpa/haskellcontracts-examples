@@ -1,4 +1,5 @@
-data Int = Zero 0
+-- Mutual recursion and scrutinizing a function call.
+data Nat = Zero 0
          | Succ 1;;
                    
 f x = case odd x of
@@ -13,6 +14,6 @@ even x = case x of
   | Zero -> True
   | Succ a -> odd a;;
     
-f ::: CF;;
-odd ::: CF;;
-even ::: CF;;
+f    ::: CF -> CF;;
+odd  ::: CF -> CF;;
+even ::: CF -> CF;;

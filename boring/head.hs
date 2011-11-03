@@ -1,3 +1,4 @@
+-- Boring because ../yes/crash-on-wrong-nat.hs is similar.
 data List = Nil 0 
           | Cons 2;;
 
