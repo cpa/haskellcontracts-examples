@@ -1,4 +1,5 @@
-data Int = Zero 0
+-- Here we need '(CF -> CF -> CF) -> CF'.
+data Nat = Zero 0
          | Succ 1;;
 
 add x y = case x of
@@ -6,4 +7,3 @@ add x y = case x of
   | Succ a -> Succ (add a y);;
     
 add ::: CF;;
---add ::: CF -> CF -> CF;;
