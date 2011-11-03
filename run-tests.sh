@@ -2,8 +2,10 @@
 
 # Root of examples directory
 egsDir="$(dirname "$0")"
-# The relative path to Nathan's Check command
-CHECK=${CHECK:-$egsDir/../haskellcontracts.git/contracts/Check}
+# The relative path to Nathan's Check command. This is where check
+# will be if you run `make egs` in the contracts dir of your
+# haskellcontracts repo.
+CHECK=${CHECK:-$egsDir/../Check}
 TIMEOUT=${TIMEOUT:-10}
 
 # Kill the whole testing process on Ctrl-C
@@ -15,13 +17,14 @@ run-test () {
     passMsg="$2"
     timeoutMsg="$3"
 
-    #z3 spawns many parallel processes and timeout.sh doesn't kill
-    #them all.
+    # z3 spawns many parallel processes and timeout.sh doesn't kill
+    # them all.  XXX: Probably better to do this selectively, e.g. all
+    # z3 processes with us as parent?
     killall --user `whoami` z3 &>/dev/null
 
     "$egsDir"/timeout.sh $TIMEOUT "$CHECK" "$test" -q -p # --engine z3
     ret=$?
-    printf "%-30s" "$test: "
+    printf "%-50s" "$test: "
     if [[ $ret -eq 0 ]]; then
         echo $passMsg
     # timeout.sh returns 124 on timeout
@@ -60,6 +63,26 @@ usage () {
     cat <<EOF
 TIMEOUT is the per test time limit and CHECK is the path to the Check
 command.
+
+Examples:
+
+1. Run a single test with a non-standard timeout of 35 seconds:
+
+  \$ TIMEOUT=35 $0 just yes/add-and-mult-nonZero.hs
+
+2. Run all tests with a non-standard check program:
+
+  \$ CHECK=<path to check> $0 all
+
+3. Run all test and save the results <file> for later comparison,
+while watching them in real time:
+
+  \$ $0 all | tee <file>
+
+NB: running tests results in .tptp files containing formulas.  It can
+be useful to feed these to Equinox manually and hand edit them while
+debugging.
+
 EOF
 
     exit 1
