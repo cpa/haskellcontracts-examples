@@ -38,18 +38,18 @@ main () {
     echo "  Z3: 1 = error"
     echo
 
-    echo Running tests expected to pass
-    echo ==============================
+    echo Running tests hoped to pass \(unsatisfiable\)
+    echo ===========================================
     echo
-    for f in "$egsDir"/ok/*.hs; do
+    for f in "$egsDir"/yes/*.hs; do
         run-test "$f" "passed" "TIMED OUT"
     done
 
     echo
-    echo Running tests expected to timeout
-    echo =================================
+    echo Running tests hoped to fail \(satisfiable\)
+    echo =========================================
     echo
-    for f in "$egsDir"/diverges/*.hs; do
+    for f in "$egsDir"/no/*.hs; do
         run-test "$f" "PASSED" "timed out"
     done
 }
