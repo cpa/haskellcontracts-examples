@@ -1,14 +1,15 @@
 What you need
 =============
-* equinox
-* ghc
+* https://github.com/cpa/haskellcontracts. Clone that, `cd` into `contracts`, and then run `make; make egs`. The second `make` will pull in a copy of these examples.
 
 Directories and files
 =====================
-* ok/ contains examples for which equinox gives the right expected answer. Warning: sometimes it is expected for equinox to hang because the function doesn't satisfy its contract! (see extrasimple.hs)
-* diverges/ contains examples for which equinox diverges (or converges too slowly, who knows?)
+* yes/: examples which we believe to be true.  This doesn't mean Equinox will refute our
+generated formulas, but that's the ideal outcome.
 
-Usage
-=====
+* no/: examples which we believe to be false.  This doesn't mean Equinox will find a model for our generated formulas, but that's the ideal outcome.
 
-See the README of the haskellcontracts repo.
+* boring/: examples which are boring, or messed up, or ...
+
+* run-tests.sh: script for running tests. See `./run-tests.sh -h` for usage and examples.
+
