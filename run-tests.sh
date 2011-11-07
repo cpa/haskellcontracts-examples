@@ -22,7 +22,7 @@ run-test () {
     # z3 processes with us as parent?
     killall --user `whoami` z3 &>/dev/null
 
-    "$egsDir"/timeout.sh $TIMEOUT "$CHECK" "$test" -q -p # --engine z3
+    "$egsDir"/timeout.sh $TIMEOUT "$CHECK" "$test" -q -p # --engine vampire32 # --engine z3
     ret=$?
     printf "%-50s" "$test: "
     if [[ $ret -eq 0 ]]; then

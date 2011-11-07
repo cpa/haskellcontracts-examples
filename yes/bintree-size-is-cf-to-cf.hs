@@ -1,7 +1,7 @@
 data Tree = Leaf 0
           | Node 3;;
                     
-data Int = Zero 0
+data Nat = Zero 0
          | Succ 1;;
 
 size t = case t of
@@ -10,7 +10,8 @@ size t = case t of
     
 add x y = case x of
   | Zero -> y
-  | Succ a -> Succ (add a y);;
-    
-size ::: a:{x: True} -> {z:True};;
-add  ::: a:{x: True} -> b:{y:True} -> {z:True};;
+  | Succ x_ -> Succ (add x_ y);;
+
+add  ::: CF -> CF -> CF;;
+size ::: CF -> CF;;
+
