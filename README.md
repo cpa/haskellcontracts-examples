@@ -13,3 +13,7 @@ generated formulas, but that's the ideal outcome.
 
 * run-tests.sh: script for running tests. See `./run-tests.sh -h` for usage and examples.
 
+Why is this a separate repo?
+============================
+
+Because that makes it easier to test different versions of code with different versions of tests, independently.
