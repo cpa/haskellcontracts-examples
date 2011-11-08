@@ -1,9 +1,4 @@
 -- cf. ./add-is-cf.hs
-data Nat = Zero 0
-         | Succ 1;;
-
-add x y = case x of
-  | Zero -> y
-  | Succ a -> Succ (add a y);;
+import "../lib/arithmetic.hs";;
     
 add ::: CF -> CF -> CF;;

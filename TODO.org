@@ -29,7 +29,7 @@ NB: the generated theory is unsat when either of c1 or c2 hold, which
 is very wrong!
 
 * Features
-** [0/2] command line switches to control theory parameters
+** [0/4] command line switches to control theory parameters
 - [ ] whether or not 'min's are generated at all.
 - [ ] placement of various "design decision" 'min's.
       - [ ] leading 'min's on arrows
@@ -55,8 +55,6 @@ is very wrong!
       fewer quantifiers seems good, but i need to experiment to see if
       there is an improvement in practice.
 - [ ] whether the 'forall a. a = ...' versions are used.
-** TODO add support for 'Any' contract
-the easy way to do this is to parse 'Any' to '{_:True}'
 ** DONE decide how to best support 'min(K(x1,...,xn)) -> min(x1) /\ ... /\ min(xn)'
 update: the motivation below is still correct, but the solutions below
 are dumb.  a better solution is to add
@@ -103,10 +101,9 @@ and then maybe
   forall x1,...,xn. min(K(x1,...,xn)) -> deepmin(K(x1,...,xn))
 
 or maybe some other, more specific, ways to introduce 'deepmin'.
-** TODO implement new phi_cf
-** TODO support 'import's in example files
+** DONE implement new phi_cf
+** DONE support 'import's in example files
 there is a lot of code duplication across examples.
-
 ** TODO prettier arrow contracts
 it's annoying and ugly to write
 
@@ -138,3 +135,5 @@ e.g.
 right now we use "axiom" for everything.  the goal formula should be a
 "conjecture".  basically, we want '-' ==> 'axiom' and '+' ==>
 'conjecture'.
+** TODO add support for 'Any' contract
+the easy way to do this is to parse 'Any' to '{_:True}'
