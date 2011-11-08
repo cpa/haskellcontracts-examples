@@ -1,5 +1,4 @@
 -- Boolean logic.
-
 and a b = case a of
   | True -> b
   | False -> False;;
