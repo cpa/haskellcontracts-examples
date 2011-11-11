@@ -55,6 +55,48 @@ is very wrong!
       fewer quantifiers seems good, but i need to experiment to see if
       there is an improvement in practice.
 - [ ] whether the 'forall a. a = ...' versions are used.
+** TODO move 'Bool' into a library
+the translation of 'Bool' is hardcoded in the translation, but we
+could have lib/bool.hs and then tests could 'import "../lib/bool.hs"'.
+** TODO better test suite
+borrow IsaPlanner examples from Zeno directly, or from the IsaPlanner
+site. the urls are in the zeno tech report:
+- examples on isaplanner site:
+  http://dream.inf.ed.ac.uk/projects/lemmadiscovery/results/case-analysis-rippling.txt
+- haskell and lisp versions of examples on zeno site:
+  http://www.doc.ic.ac.uk/~ws506/tryzeno/comparison
+** TODO remove the "only allow top level case expressions" restriction
+we can provide this as a source to source translation if necessary,
+but it's annoying when creating examples.  it's not hard to translate
+nested cases. i.e., currently we translate (approximate, ignoring
+Min's)
+
+  [[ f xs = case e of [pi -> ei] ]]
+
+  ==>
+
+  (e = BAD \/ (\/_i e = pi) \/ f xs = UNR)
+  /\
+  (e = BAD -> f xs = BAD)
+  /\
+  (/\_i (e = pi -> f xs = ei))
+
+but if nested case were allowed we'd simply need to change the (e = pi
+-> f xs = ei) part to
+
+: [[ f xs = ei ]]
+
+when ei = case e' of [pi' -> ei'].
+** TODO use haskell syntax
+zeno does this, and it seems like a good idea.  we only require a few
+changes:
+1. use real imports
+2. move contracts into comments
+3. declare data types properly, i.e. give arguments instead of arities.
+
+this has an immediate benefit: we can use haskell to type check our
+examples.  it also means we're closer to feeding our examples to zeno
+or lazy quickcheck or ...  i.e., more tool support.
 ** DONE decide how to best support 'min(K(x1,...,xn)) -> min(x1) /\ ... /\ min(xn)'
 update: the motivation below is still correct, but the solutions below
 are dumb.  a better solution is to add
