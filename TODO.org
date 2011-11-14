@@ -179,3 +179,41 @@ right now we use "axiom" for everything.  the goal formula should be a
 'conjecture'.
 ** TODO add support for 'Any' contract
 the easy way to do this is to parse 'Any' to '{_:True}'
+** MAYBE add a typed translation
+the zeno paper reports that this improved results in ACL2s.  looking
+at zeno's ACL2s examples at
+http://www.doc.ic.ac.uk/~ws506/tryzeno/comparison we see the typing
+takes the form of predicates and relations between inputs and outputs
+of functions w.r.t. these predicates.  e.g., multiplication gets
+
+: (defthm type_mul
+:   (implies (and (natp x)
+:                 (natp y))
+:            (natp (z_mul x y)))
+:   :rule-classes (:type-prescription))
+
+the zeno paper also mentions that encoding datatypes in ACL2s is not
+ideal.  e.g. binary trees (the encoding is 'tree a = () | (a, (tree a, tree a))
+
+: (defun btreep (x)
+:   (or (= x nil)
+:       (and (consp x)
+:            (consp (cdr x))
+:            (btreep (car (cdr x)))
+:            (btreep (cdr (cdr x))))))
+
+for us, natp might look like
+
+: forall x. x = Z 
+:        \/ (exists x_ . x = S x_ /\ Nat(x_))
+:        \/ Undef(x)
+:        <-> Nat(x)
+
+: forall x. x = BAD \/ x = UNR <-> Undef(x)
+
+then, when axiomitizing a function def, we can have
+
+: forall x1 ... xn. T1(x1) /\ ... /\ Tn(xn) 
+:                -> T(f x1 ... xn) /\ <the usual axiomitization>
+
+where f : T1 -> ... -> Tn -> T.
