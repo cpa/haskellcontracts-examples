@@ -55,9 +55,13 @@ is very wrong!
       fewer quantifiers seems good, but i need to experiment to see if
       there is an improvement in practice.
 - [ ] whether the 'forall a. a = ...' versions are used.
-** TODO move 'Bool' into a library
+** DONE move 'Bool' into a library
 the translation of 'Bool' is hardcoded in the translation, but we
 could have lib/bool.hs and then tests could 'import "../lib/bool.hs"'.
+** TODO restrict generated theory to relevant defs
+right now we insert more defs than neccessary when generating the
+theory, which slows things down significantly in some cases.
+something like a transitive free variable check should be sufficient.
 ** TODO better test suite
 borrow IsaPlanner examples from Zeno directly, or from the IsaPlanner
 site. the urls are in the zeno tech report:
@@ -87,7 +91,7 @@ but if nested case were allowed we'd simply need to change the (e = pi
 : [[ f xs = ei ]]
 
 when ei = case e' of [pi' -> ei'].
-** TODO use haskell syntax
+** DONE use haskell syntax
 zeno does this, and it seems like a good idea.  we only require a few
 changes:
 1. use real imports
@@ -217,3 +221,24 @@ then, when axiomitizing a function def, we can have
 :                -> T(f x1 ... xn) /\ <the usual axiomitization>
 
 where f : T1 -> ... -> Tn -> T.
+** MAYBE add type checking for contracts
+they're in comments and not haskell, so GHQ ignores them.  one easy
+way to type check them would be to generate a lambda and typecheck it
+with ghc. a translation like
+
+: [[ x:c -> c' ]] ==> \x -> ([[ c ]], [[ c' ]])
+: [[ c -> c' ]]   ==> [[ _:c -> c' ]]
+: [[ c1&&c2 ]] ==> ([[ c1 ]], [[ c2 ]])
+: [[ c1||c2 ]] ==> ([[ c1 ]], [[ c2 ]])
+: [[ CF ]]     ==> ()
+: [[ {x : p } ]] ==> \x . p
+
+might work.  so, e.g., we'd have
+
+: [[ CF -> {x: nonZero x} -> y:(CF&&{y: p y}) -> {r : q y r} ]]
+: ==>
+: \_ -> ((),
+:        \_ -> (\x -> nonZero x,
+:               \y -> (((),
+:                       \y -> p y),
+:                      \r -> q y r)))

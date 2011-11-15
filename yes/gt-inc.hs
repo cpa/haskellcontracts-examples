@@ -12,11 +12,17 @@
 -- any of the second group in our system.
 --
 -- This loops as Dimitrios claimed it would.
-import "../lib/arithmetic.hs";;
+import Lib.Arithmetic ;;
 
 inc x = Succ x;;
 
-gt ::: x:CF -> {y: eqNat (Succ y) x} -> {z: z};;
-gtAux ::: x:CF -> {y: eqNat y x} -> {z: z};;
+{-# CONTRACT
+gt ::: x:CF -> {y: eqNat (Succ y) x} -> {z: z}
+#-};;
+{-# CONTRACT
+gtAux ::: x:CF -> {y: eqNat y x} -> {z: z}
+#-};;
 
-inc ::: x:CF -> {r : gt r x};;
+{-# CONTRACT
+inc ::: x:CF -> {r : gt r x}
+#-};;

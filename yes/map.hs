@@ -1,10 +1,16 @@
+import Lib.Prelude ;;
+import Lib.Arithmetic ;;
+
 -- Higher order example.
-data List = Nil 0
-          | Cons 2;;
+data List = Nil
+          | Cons Nat List
+          {- SKIP -}
+          deriving Show
+;;
            
 map f xs = case xs of           
-  | Nil -> Nil
-  | Cons x ys -> Cons (f x) (map f ys);;
+  ; Nil -> Nil
+  ; Cons x ys -> Cons (f x) (map f ys);;
 
 -- Higher order examples make clear the desire for richer contracts.
 -- The best we could do here is probably something like
@@ -17,4 +23,6 @@ map f xs = case xs of
 -- What's a nice way to say that the result mirrors the input, but
 -- satisfying c2 where the input satisfied c1? 'zip' is general here,
 -- but length would be 'shape' more generally.
-map ::: (CF -> CF) -> CF -> CF;;
+{-# CONTRACT
+map ::: (CF -> CF) -> CF -> CF
+#-};;

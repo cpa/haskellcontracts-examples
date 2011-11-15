@@ -1,11 +1,11 @@
 -- Not sure this is actually interesting ... but recurses on one
 -- argument and returns the other.
-data Nat = Zero 0
-         | Succ 1;;
+import Lib.Prelude ;;
                    
 slowConst c n = case n of
-  | Zero -> c
-  | Succ a -> slowConst c a;;
+  ; Zero -> c
+  ; Succ a -> slowConst c a;;
 
-slowConst ::: CF -> CF -> CF;;
-
+{-# CONTRACT
+slowConst ::: CF -> CF -> CF
+#-};;

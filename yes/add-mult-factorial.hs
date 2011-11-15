@@ -1,21 +1,25 @@
 -- Relatively complicated contracts on arithmetic functions.
-import "../lib/arithmetic.hs";;
-import "../lib/logic.hs";;
+import Lib.Arithmetic ;;
+import Lib.Logic ;;
 
 fac n = case n of
-  | Zero -> Succ Zero
-  | Succ n_ -> mult n (fac n_);;
+  ; Zero -> Succ Zero
+  ; Succ n_ -> mult n (fac n_);;
 
 positive x = notZero x;;
 
 lem x y = case x of
-  | Zero -> True
-  | Succ x_ -> lem x_ y;;
+  ; Zero -> True
+  ; Succ x_ -> lem x_ y;;
 
 
+{-# CONTRACT
+gt ::: x:CF -> {y: eqNat (Succ y) x} -> {z: z}
+#-};;
+{-# CONTRACT
+gtAux ::: x:CF -> {y: eqNat y x} -> {z: z}
+#-};;
 
-gt ::: x:CF -> {y: eqNat (Succ y) x} -> {z: z};;
-gtAux ::: x:CF -> {y: eqNat y x} -> {z: z};;
 -- If this even made sense, would still need lem to prove add, but add
 -- doesn't mention lem, and so lem would never be included in add's
 -- env.
@@ -30,7 +34,9 @@ gtAux ::: x:CF -> {y: eqNat y x} -> {z: z};;
 -- fof(gt,axiom,
 -- (! [Y] : (cf(Y) => (f__gt(('f__Succ'(Y)),Y) = 'True' |
 --                     f__gt(('f__Succ'(Y)),Y) = 'UNR')))).
-add  ::: x:(CF&&{x: positive x}) -> y:CF                    -> {z: gt z y};;
+{-# CONTRACT
+add  ::: x:(CF&&{x: positive x}) -> y:CF                    -> {z: gt z y}
+#-};;
 
 -- Notice the 'implies' allows us to move any predicate contract on an
 -- argument into the predicate on the conclusion. cf. the contract for

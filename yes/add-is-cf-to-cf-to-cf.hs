@@ -1,4 +1,6 @@
 -- cf. ./add-is-cf.hs
-import "../lib/arithmetic.hs";;
-    
-add ::: CF -> CF -> CF;;
+import Lib.Arithmetic ;;
+
+{-# CONTRACT    
+  add ::: CF -> CF -> CF
+  #-};;

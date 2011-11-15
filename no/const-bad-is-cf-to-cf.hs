@@ -1,4 +1,9 @@
+import Lib.Prelude ;;
+
 -- Wrongly assert that 'const BAD' is CF.
 const x y = x;;
-cbad = const BAD;;
-cbad ::: CF -> CF;;
+cbad = const bad;;
+
+{-# CONTRACT
+cbad ::: CF -> CF
+#-};;

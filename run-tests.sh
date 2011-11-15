@@ -12,7 +12,7 @@ TIMEOUT=${TIMEOUT:-10}
 trap 'exit 1' INT
 
 # Run a test and report results
-run-test () { 
+run-test () {
     test="$1"
     passMsg="$2"
     timeoutMsg="$3"
@@ -22,7 +22,7 @@ run-test () {
     # z3 processes with us as parent?
     killall --user `whoami` z3 &>/dev/null
 
-    "$egsDir"/timeout.sh $TIMEOUT "$CHECK" "$test" -q -p # --engine vampire32 # --engine z3
+    "$egsDir"/timeout.sh $TIMEOUT "$CHECK" "$test" -q -p -i "$egsDir" # --engine vampire32 # --engine z3
     ret=$?
     printf "%-50s" "$test: "
     if [[ $ret -eq 0 ]]; then

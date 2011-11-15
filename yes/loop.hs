@@ -1,2 +1,5 @@
 f x = f x;;
-f ::: CF -> CF;;
+
+{-# CONTRACT
+f ::: CF -> CF
+#-};;
