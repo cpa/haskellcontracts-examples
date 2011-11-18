@@ -1,4 +1,4 @@
-module Lib.List where
+module Lib.List(module Lib.List, module Lib.Prelude) where
 
 import Lib.Prelude ;;
 
@@ -7,8 +7,8 @@ length x = case x of
   ; Cons a b -> Succ (length b);;
     
 null x = case x of
-  ; Nil -> False
-  ; Cons a b -> True;;
+  ; Nil -> True
+  ; Cons a b -> False;;
 
 reverse x acc = case x of
   ; Nil -> acc

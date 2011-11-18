@@ -1,4 +1,5 @@
 import Lib.List ;;
+import Lib.Logic ;;
 
 f x = case x of 
     ; Nil -> Nil

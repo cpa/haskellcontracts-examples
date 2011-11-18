@@ -20,10 +20,5 @@ f = case True of
     ; False -> t
 ;;
 
-{-# CONTRACT
-t ::: {r:r}
-#-};;
-{-# CONTRACT
-f ::: {r:r}
-#-};;
-                 
+{-# CONTRACT t ::: {r:r} #-};;
+{-# CONTRACT f ::: {r:r} #-};;
