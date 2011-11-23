@@ -7,6 +7,7 @@ egsDir="$(dirname "$0")"
 # haskellcontracts repo.
 CHECK=${CHECK:-$egsDir/../Check}
 TIMEOUT=${TIMEOUT:-10}
+OPTIONS=${OPTIONS:-"-q -p"}
 
 # Kill the whole testing process on Ctrl-C
 trap 'exit 1' INT
@@ -22,7 +23,7 @@ run-test () {
     # z3 processes with us as parent?
     killall --user `whoami` z3 &>/dev/null
 
-    "$egsDir"/timeout.sh $TIMEOUT "$CHECK" "$test" -q -p -i "$egsDir" # --engine vampire32 # --engine z3
+    "$egsDir"/timeout.sh $TIMEOUT "$CHECK" "$test" $OPTIONS -i "$egsDir" # --engine vampire32 # --engine z3
     ret=$?
     printf "%-50s" "$test: "
     if [[ $ret -eq 0 ]]; then
@@ -92,7 +93,8 @@ if [[ ! -x "$CHECK" ]]; then
     usage
 fi
 
-echo TIMEOUT is $TIMEOUT
+echo TIMEOUT = $TIMEOUT
+echo OPTIONS = $OPTIONS
 case $1 in
     all) main;;
     just) run-test "$2" "passed" "timed out";;

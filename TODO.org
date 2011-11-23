@@ -4,7 +4,7 @@ Summarise bugs, features to add, etc. here, in addition to littering
 the source with "XXX" comments.
 
 * Bugs
-** TODO multiple contracts on the same function are translated incorrectly
+** DONE multiple contracts on the same function are translated incorrectly
 If
 
   f ::: c1
@@ -58,7 +58,7 @@ is very wrong!
 ** DONE move 'Bool' into a library
 the translation of 'Bool' is hardcoded in the translation, but we
 could have lib/bool.hs and then tests could 'import "../lib/bool.hs"'.
-** TODO restrict generated theory to relevant defs
+** DONE restrict generated theory to relevant defs
 right now we insert more defs than neccessary when generating the
 theory, which slows things down significantly in some cases.
 something like a transitive free variable check should be sufficient.
