@@ -3,6 +3,7 @@
 -- contain a crashing subexpression that 'isZero' did not inspect.
 -- cf. ../yes/crash-on-wrong-nat.hs.
 import Lib.Arithmetic ;;
+import Lib.Logic ;;
 
 crashOnSucc x = case x of {
 ; Zero -> Zero

@@ -29,8 +29,8 @@ NB: the generated theory is unsat when either of c1 or c2 hold, which
 is very wrong!
 
 * Features
-** [0/4] command line switches to control theory parameters
-- [ ] whether or not 'min's are generated at all.
+** [1/4] command line switches to control theory parameters
+- [X] whether or not 'min's are generated at all.
 - [ ] placement of various "design decision" 'min's.
       - [ ] leading 'min's on arrows
       - [ ] leading 'min's on negative CFs
@@ -54,6 +54,11 @@ is very wrong!
 
       fewer quantifiers seems good, but i need to experiment to see if
       there is an improvement in practice.
+
+      UPDATE: equinox 5 does not do well with 2', but equinox 6 is ok.
+      see 911ac185bb45a1a4d3754262bd8d9d8531daa4f3 in
+      haskellcontracts.git
+
 - [ ] whether the 'forall a. a = ...' versions are used.
 ** DONE move 'Bool' into a library
 the translation of 'Bool' is hardcoded in the translation, but we
@@ -69,7 +74,7 @@ site. the urls are in the zeno tech report:
   http://dream.inf.ed.ac.uk/projects/lemmadiscovery/results/case-analysis-rippling.txt
 - haskell and lisp versions of examples on zeno site:
   http://www.doc.ic.ac.uk/~ws506/tryzeno/comparison
-** TODO remove the "only allow top level case expressions" restriction
+** DONE remove the "only allow top level case expressions" restriction
 we can provide this as a source to source translation if necessary,
 but it's annoying when creating examples.  it's not hard to translate
 nested cases. i.e., currently we translate (approximate, ignoring
@@ -221,8 +226,8 @@ then, when axiomitizing a function def, we can have
 :                -> T(f x1 ... xn) /\ <the usual axiomitization>
 
 where f : T1 -> ... -> Tn -> T.
-** MAYBE add type checking for contracts
-they're in comments and not haskell, so GHQ ignores them.  one easy
+** DONE add type checking for contracts
+they're in comments and not haskell, so GHC ignores them.  one easy
 way to type check them would be to generate a lambda and typecheck it
 with ghc. a translation like
 

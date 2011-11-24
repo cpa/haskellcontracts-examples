@@ -1,9 +1,7 @@
 -- Boolean logic.
-module Lib.Logic where
+module Lib.Logic (module Lib.Logic, module Lib.Prelude) where
 
-data Bool
-   = False
-   | True ;;
+import Lib.Prelude
 
 and a b = case a of {
 ; True -> b
