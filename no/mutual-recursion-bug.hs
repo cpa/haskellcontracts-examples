@@ -10,15 +10,15 @@
 --   C |- phi_1 /\ phi_2 =trans=> C, ~ (phi_1 /\ phi_2) |- _|_
 import Lib.Prelude ;;
 
-t = case True of
+t = case True of {
     ; True -> True
     ; False -> f
-;;
+    };;
 
-f = case True of
+f = case True of {
     ; True -> False
     ; False -> t
-;;
+    };;
 
 {-# CONTRACT t ::: {r:r} #-};;
 {-# CONTRACT f ::: {r:r} #-};;

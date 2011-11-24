@@ -4,13 +4,15 @@ import Lib.Arithmetic ;;
 import Lib.Logic ;;
 import Lib.Prelude ;;
 
-crashOnSucc x = case x of
-  ; Zero -> Zero
-  ; Succ y -> bad;;
+crashOnSucc x = case x of {
+; Zero -> Zero
+; Succ y -> bad
+};;
 
-crashOnZero x = case x of
-  ; Zero -> unr
-  ; Succ y -> x;;
+crashOnZero x = case x of {
+; Zero -> unr
+; Succ y -> x
+};;
 
 {-# CONTRACT
 crashOnSucc :::        {x:     isZero x}   -> CF

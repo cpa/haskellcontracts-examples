@@ -1,17 +1,6 @@
 import Lib.Prelude ;;
 import Lib.Arithmetic ;;
-
--- Higher order example.
-data List = Nil
-          | Cons Nat List
-          {- SKIP -}
-          deriving Show
-;;
            
-map f xs = case xs of           
-  ; Nil -> Nil
-  ; Cons x ys -> Cons (f x) (map f ys);;
-
 -- Higher order examples make clear the desire for richer contracts.
 -- The best we could do here is probably something like
 --

@@ -2,21 +2,25 @@
 module Lib.Logic where
 
 data Bool
-    = False
-    | True ;;
+   = False
+   | True ;;
 
-and a b = case a of
-  ; True -> b
-  ; False -> False;;
+and a b = case a of {
+; True -> b
+; False -> False
+};;
 
-or a b = case a of
-  ; True -> True
-  ; False -> b;;
+or a b = case a of {
+; True -> True
+; False -> b
+};;
 
-not a = case a of
-  ; True -> False
-  ; False -> True;;
+not a = case a of {
+; True -> False
+; False -> True
+};;
 
-implies a b = case a of
-  ; False -> True
-  ; True -> b;;
+implies a b = case a of {
+; False -> True
+; True -> b
+};;

@@ -2,15 +2,17 @@
 import Lib.Arithmetic ;;
 import Lib.Logic ;;
 
-fac n = case n of
-  ; Zero -> Succ Zero
-  ; Succ n_ -> mult n (fac n_);;
+fac n = case n of {
+        ; Zero -> Succ Zero
+        ; Succ n_ -> mult n (fac n_)
+        };;
 
 positive x = notZero x;;
 
-lem x y = case x of
-  ; Zero -> True
-  ; Succ x_ -> lem x_ y;;
+lem x y = case x of {
+          ; Zero -> True
+          ; Succ x_ -> lem x_ y
+          };;
 
 
 {-# CONTRACT

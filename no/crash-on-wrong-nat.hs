@@ -4,13 +4,15 @@
 -- cf. ../yes/crash-on-wrong-nat.hs.
 import Lib.Arithmetic ;;
 
-crashOnSucc x = case x of
-  ; Zero -> Zero
-  ; Succ y -> bad;;
+crashOnSucc x = case x of {
+; Zero -> Zero
+; Succ y -> bad
+};;
 
-crashOnZero x = case x of
-  ; Zero -> bad
-  ; Succ y -> x;;
+crashOnZero x = case x of {
+; Zero -> bad
+; Succ y -> x
+};;
 
 {-# CONTRACT
 crashOnSucc :::        {x:     isZero x}   -> CF

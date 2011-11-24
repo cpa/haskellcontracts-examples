@@ -2,9 +2,10 @@
 -- argument and returns the other.
 import Lib.Prelude ;;
                    
-slowConst c n = case n of
-  ; Zero -> c
-  ; Succ a -> slowConst c a;;
+slowConst c n = case n of {
+; Zero -> c
+; Succ a -> slowConst c a
+};;
 
 {-# CONTRACT
 slowConst ::: CF -> CF -> CF
