@@ -1,30 +1,30 @@
 module Lib.Prelude(module Prelude,module Lib.Prelude) where
 
-{- SKIP -}
+{-# SKIP #-}
 import Prelude(error,Show)
 
 data Bool
    = False
    | True
-   {- SKIP -}
+   {-# SKIP #-}
    deriving Show
    ;;
 
 data Nat
    = Zero
    | Succ Nat
-   {- SKIP -}
+   {-# SKIP #-}
    deriving Show
    ;;
 
 data List
    = Nil 
    | Cons Nat List
-   {- SKIP -}
+   {-# SKIP #-}
    deriving Show
    ;;
 
-{- SKIP -}
+{-# SKIP #-}
 unr = unr
-{- SKIP -}
+{-# SKIP #-}
 bad = error "BAD"
