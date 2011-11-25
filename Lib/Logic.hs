@@ -1,4 +1,5 @@
 -- Boolean logic.
+{-# SKIP #-}
 module Lib.Logic (module Lib.Logic, module Lib.Prelude) where
 
 import Lib.Prelude ;;

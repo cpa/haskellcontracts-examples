@@ -1,3 +1,4 @@
+{-# SKIP #-}
 module Lib.BinaryTree where
 
 import Lib.Arithmetic ;;

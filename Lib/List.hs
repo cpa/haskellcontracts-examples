@@ -1,3 +1,4 @@
+{-# SKIP #-}
 module Lib.List(module Lib.List, module Lib.Prelude) where
 
 import Lib.Prelude ;;

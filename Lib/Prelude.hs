@@ -1,3 +1,4 @@
+{-# SKIP #-}
 module Lib.Prelude(module Prelude,module Lib.Prelude) where
 
 {-# SKIP #-}
