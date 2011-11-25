@@ -1,7 +1,7 @@
 -- Boolean logic.
 module Lib.Logic (module Lib.Logic, module Lib.Prelude) where
 
-import Lib.Prelude
+import Lib.Prelude ;;
 
 and a b = case a of {
 ; True -> b
