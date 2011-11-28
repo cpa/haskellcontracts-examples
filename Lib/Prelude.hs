@@ -18,12 +18,24 @@ data Nat
    deriving Show
    ;;
 
-data List
+data List a
    = Nil 
-   | Cons Nat List
+   | Cons a (List a)
    {-# SKIP #-}
    deriving Show
    ;;
+
+data Lemma
+   = QED
+   {-# SKIP #-}
+   deriving Show
+   ;;
+
+{-# SKIP #-}
+using :: a -> Lemma -> a
+using e l = case l of {
+; QED -> e
+};;
 
 {-# SKIP #-}
 unr = unr
