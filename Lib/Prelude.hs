@@ -33,7 +33,7 @@ data Lemma
 
 {-# SKIP #-}
 using :: a -> Lemma -> a
-using e l = case l of {
+e `using` lem = case lem of {
 ; QED -> e
 };;
 

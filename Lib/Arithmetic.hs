@@ -46,6 +46,8 @@ max a b = case (ge a b) of {
 ; True -> a
 ; False -> b
 };;
+
+le x y = ge y x ;;
     
 ge x y = case x of {
 ; Zero -> isZero y
