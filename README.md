@@ -1,6 +1,6 @@
 What you need
 =============
-* https://github.com/cpa/haskellcontracts. Clone that, `cd` into `contracts`, and then run `make; make egs`. The second `make` will pull in a copy of these examples.
+* https://github.com/cpa/haskellcontracts. Clone that and run `make; make egs; make equinox`. The second `make` will pull in a copy of these examples.
 
 Directories and files
 =====================
