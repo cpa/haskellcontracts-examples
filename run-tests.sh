@@ -5,7 +5,7 @@ egsDir="$(dirname "$0")"
 # The relative path to Nathan's Check command. This is where check
 # will be if you run `make egs` in the contracts dir of your
 # haskellcontracts repo.
-CHECK=${CHECK:-$egsDir/../Check}
+CHECK=${CHECK:-$egsDir/../hcc}
 TIMEOUT=${TIMEOUT:-10}
 OPTIONS=${OPTIONS:-"-q -k"}
 
