@@ -36,6 +36,14 @@ run-test () {
     fi
 }
 
+# Find .hs files which aren't .tc.hs files, under $1.  Would be more
+# modular to put the temp files in a temp file dir, and not have to
+# filter them out here, but this is easier ...
+skip-tc-temps () {
+  root="$1"
+  find "$root" -name '*.hs' -a ! -name '*.tc.hs' | sort
+}
+
 main () {
     echo "Exit codes:"
     echo "  Equinox: 1 = \"Satisfiable\""
@@ -45,7 +53,7 @@ main () {
     echo Running tests hoped to pass \(unsatisfiable\)
     echo ===========================================
     echo
-    for f in "$egsDir"/yes/*.hs; do
+    for f in `skip-tc-temps "$egsDir"/yes`; do
         run-test "$f" "passed" "TIMED OUT"
     done
 
@@ -53,7 +61,7 @@ main () {
     echo Running tests hoped to fail \(satisfiable\)
     echo =========================================
     echo
-    for f in "$egsDir"/no/*.hs; do
+    for f in `skip-tc-temps "$egsDir"/no`; do
         run-test "$f" "PASSED" "timed out"
     done
 }
