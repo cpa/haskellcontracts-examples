@@ -1,0 +1,3 @@
+Directory for tests that need one additional unrolling. This
+is a huge hack and will not scale as we add more tests
+requiring specific options.

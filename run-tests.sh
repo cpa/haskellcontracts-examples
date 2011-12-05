@@ -58,6 +58,17 @@ main () {
     done
 
     echo
+    echo ... including tests needing -u 1
+    echo ================================
+    echo
+    (
+    OPTIONS="$OPTIONS -u 1"
+    for f in `skip-tc-temps "$egsDir"/yes-u1`; do
+        run-test "$f" "passed" "TIMED OUT"
+    done
+    )
+
+    echo
     echo Running tests hoped to fail \(satisfiable\)
     echo =========================================
     echo
