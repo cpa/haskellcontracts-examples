@@ -38,6 +38,17 @@ e `using` lem = case lem of {
 };;
 
 {-# SKIP #-}
+usingMany :: a -> List Lemma -> a
+-- List version of 'using'.  Not so useful for us, since we don't have
+-- nice list syntax.
+--
+-- usingMany x prfs = foldl using x prfs
+usingMany x prfs = case prfs of {
+                   ; Nil -> x 
+                   ; Cons p ps -> usingMany x ps `using` p
+                   } ;;
+
+{-# SKIP #-}
 unr = unr
 {-# SKIP #-}
 bad = error "BAD"
