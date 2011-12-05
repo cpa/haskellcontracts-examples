@@ -57,6 +57,7 @@ main () {
         run-test "$f" "passed" "TIMED OUT"
     done
 
+    # HACK
     echo
     echo ... including tests needing -u 1
     echo ================================
@@ -78,17 +79,20 @@ main () {
 }
 
 usage () {
-    echo "usage: [TIMEOUT=<seconds>] [CHECK=<path>] $0 ( all | just <test> )" >&2
+    echo "usage: [OPTIONS=<hcc options>] [TIMEOUT=<seconds>] [CHECK=<path>] $0 ( all | just <test> )" >&2
     echo
     cat <<EOF
+
 TIMEOUT is the per test time limit and CHECK is the path to the Check
-command.
+command. OPTIONS is a space separated sequence of options to pass to
+hcc.  NB: specifying OPTIONS overrides the default options.  The
+OPTIONS and TIMEOUT are printed before running the tests.
 
 Examples:
 
-1. Run a single test with a non-standard timeout of 35 seconds:
+1. Run a single test with a non-standard timeout of 35 seconds and verbose:
 
-  \$ TIMEOUT=35 $0 just yes/add-and-mult-nonZero.hs
+  \$ OPTIONS="-v" TIMEOUT=35 $0 just yes/add-and-mult-nonZero.hs
 
 2. Run all tests with a non-standard check program:
 
