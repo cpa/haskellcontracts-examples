@@ -45,25 +45,13 @@ lem_eqNat_reflexive ::: x:CF -> CF&&{qed: eqNat x x}
 lem_eqNat_reflexive2 ::: x:CF -> CF&&{qed: eqNat x x}
 #-};;
 
--- {-# CONTRACT
--- lem_add_Z_r ::: x:CF -> CF&&{qed: eqNat x (add x Zero)}
--- #-};;
-
 {-# CONTRACT
 lem_add_Z_r ::: x:CF -> CF&&{qed: eqNat (add Zero x) (add x Zero)}
 #-};;
 
--- {-# CONTRACT
--- lem_add_S_r ::: x:CF -> y:CF -> CF&&{qed: eqNat (add (Succ x) y) (add x (Succ y))}
--- #-};;
-
--- {-# CONTRACT
--- lem_add_S_r ::: x:CF -> y:CF -> CF&&{qed: (Succ (x `add` y)) `eqNat` (x `add` (Succ y))}
--- #-};;
-
--- {-# CONTRACT
--- lem_add_S_r ::: x:CF -> y:CF -> CF&&{qed: Succ (x `add` y) `eqNat` (x `add` Succ y)}
--- #-};;
+{-# CONTRACT
+  lem_add_S_r ::: x:CF -> y:CF -> CF&&{qed: Succ (x `add` y) `eqNat` (x `add` Succ y)}
+#-};;
 
 {-# CONTRACT
 lem_add_Z_r2 ::: x:CF -> CF&&{qed: eqNat x (add x Zero)}
