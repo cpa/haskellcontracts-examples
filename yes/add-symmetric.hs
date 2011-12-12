@@ -19,7 +19,7 @@ lem_add_Z_r x = case x of {
 };;
 
 lem_add_S_r x y = case x of {
-; Zero -> QED
+; Zero -> QED `using` lem_eqNat_reflexive y
 ; Succ x_ -> lem_add_S_r x_ y
 };;
 
