@@ -23,6 +23,12 @@ lem_add_S_r x y = case x of {
 ; Succ x_ -> lem_add_S_r x_ y
 };;
 
+-- Also needs a transitivity lemma in the 'Succ x_' case ...
+lem_add_symmetric x y = case x of {
+; Zero -> QED `using` lem_add_Z_r y
+; Succ x_ -> lem_add_symmetric x_ y `using` lem_add_S_r y x_
+};;
+
 -- using an irrelevant lemma causes divergence here!
 --
 -- UPDATE: not if you add 'CF' to the irrel lemma. the problem is that
@@ -50,9 +56,13 @@ lem_add_Z_r ::: x:CF -> CF&&{qed: eqNat (add Zero x) (add x Zero)}
 #-};;
 
 {-# CONTRACT
-  lem_add_S_r ::: x:CF -> y:CF -> CF&&{qed: Succ (x `add` y) `eqNat` (x `add` Succ y)}
+lem_add_S_r ::: x:CF -> y:CF -> CF&&{qed: Succ (x `add` y) `eqNat` (x `add` Succ y)}
 #-};;
 
 {-# CONTRACT
 lem_add_Z_r2 ::: x:CF -> CF&&{qed: eqNat x (add x Zero)}
+#-};;
+
+{-# CONTRACT
+lem_add_symmetric ::: x:CF -> y:CF -> CF&&{qed: (x `add` y) `eqNat` (y `add` x)}
 #-};;
