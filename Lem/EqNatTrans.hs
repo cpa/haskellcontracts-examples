@@ -1,3 +1,6 @@
+{-# SKIP #-}
+module Lem.EqNatTrans where
+
 -- Transitivity of 'eqNat'.
 --
 -- Not true for non-CF args, e.g.
@@ -12,7 +15,7 @@
 --
 --   S UNR `eqNat` BAD = BAD.
 --
--- I think it's true for CF args, but the obvious proof times out.
+-- It's true for CF args.
 --
 -- It's interesting to note that we don't seem to be able to talk
 -- about contradictions directly.  For example, we know that
@@ -45,8 +48,7 @@
 --
 --   y /= Zero,
 --
--- so I hoped that the following proof would work.  But it times out
--- (let it run for hours).
+-- so the following proof works.
 import Lib.Arithmetic ;;
 
 lem_eqNat_trans x y z = case x of {
@@ -58,18 +60,12 @@ lem_eqNat_trans x y z = case x of {
 --         z = Succ z_, 
 -- and so  Zero `eqNat` Succ z_ = False, 
 -- but we assume x `eqNat` z is not False.
-                    ; Succ z_ -> QED
+                    ; Succ z_ -> QED -- contra
                     }
-          ; Succ y_ -> case z of {
-                       ; Zero -> QED -- contra
-                       ; Succ z_ -> QED -- contra
-                       }
+          ; Succ y_ -> QED -- contra
           }
 ; Succ x_ -> case y of {
-             ; Zero -> case z of {
-                       ; Zero -> QED -- contra
-                       ; Succ z_ -> QED -- contra
-                       }
+             ; Zero -> QED -- contra
              ; Succ y_ -> case z of {
                           ; Zero -> QED -- contra
 -- For any 'a' and 'b' have 

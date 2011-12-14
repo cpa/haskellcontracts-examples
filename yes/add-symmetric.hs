@@ -1,4 +1,5 @@
 import Lib.Arithmetic ;;
+import Lem.EqNatTrans ;;
 
 lem_eqNat_reflexive x = case x of {
 ; Zero -> QED
@@ -23,11 +24,85 @@ lem_add_S_r x y = case x of {
 ; Succ x_ -> lem_add_S_r x_ y
 };;
 
--- Also needs a transitivity lemma in the 'Succ x_' case ...
+-- In the base case
+--
+--   (Zero `add` y) `eqNat` (y `add` Zero)
+--
+-- by 'lem_add_Z_r y'.
+--
+-- In the inductive case, where 'x = Succ x_', we have
+-- 
+--   (x_ `add` y) `eqNat` (y `add` x_)
+--
+-- by IH, and so *could* get
+--
+--   Succ (x_ `add` y) `eqNat` Succ (y `add` x_)
+--
+-- by computation, *if* we have 'min' for the latter. But I don't
+-- think we do.  We have
+--
+--   min((Succ x_ `add` y) `eqNat` (y `add` Succ x_)),
+--
+-- since that's what we're evaluating in the contract predicate, and
+-- that in turn gives us
+--
+--   min(Succ x_ `add` y)
+--
+-- from the outer 'case' of 'eqNat', and then we get
+--
+--   min(y `add` Succ x_)
+--
+-- from nested 'case' of 'eqNat', in the 'x = Succ (pred x)'
+-- branch. The
+--
+--   min(Succ x_ `add` y)
+--
+-- gives us
+--
+--   Succ x_ `add` y = Succ (x_ `add` y)
+--
+-- by computation, but I don't see how we could get
+--
+--   min(Succ (y `add` x_)),
+--
+-- since it's certainly not the case that
+--
+--   Succ (y `add` x_) = y `add` Succ x_
+--
+-- (e.g. take 'y = UNR').  Adding that 'min' as an axiom
+--
+--   fof(free_mins,
+--       axiom,
+--       (! [Y,X]  : ($min(f__add(Y , c_Succ(f__p1_Succ(X)))) 
+--                 => $min(c_Succ(f__add(Y , f__p1_Succ(X))))))).
+--
+-- doesn't seem to help though :P
+--
+-- Now, if we could get
+--
+--   Succ (x_ `add` y) `eqNat` Succ (y `add` x_)
+--
+-- above, via appropriate mins, then using
+--
+--   Succ (y `add` x_) `eqNat` (y `add` Succ x_),
+--
+-- by 'lem_add_S_r y x_', we'd get
+--
+--   Succ (x_ `add` y) `eqNat` (y `add` Succ x_)
+--
+-- by 'lem_eqNat_trans ...', and be done.
 lem_add_symmetric x y = case x of {
 ; Zero -> QED `using` lem_add_Z_r y
-; Succ x_ -> lem_add_symmetric x_ y `using` lem_add_S_r y x_
+; Succ x_ -> lem_add_symmetric x_ y
+             `using` lem_add_S_r y x_
+             `using` lem_eqNat_trans (Succ (x_ `add` y))
+                                     (Succ (y `add` x_))
+                                     (y `add` Succ x_)
 };;
+-- Need this above for 'lem_eqNat_trans' to be applicable.
+{-# CONTRACT
+add ::: CF -> CF -> CF
+#-};;
 
 -- using an irrelevant lemma causes divergence here!
 --
@@ -44,15 +119,15 @@ lem_add_Z_r2 x = case x of {
 };;
 
 {-# CONTRACT
-lem_eqNat_reflexive ::: x:CF -> CF&&{qed: eqNat x x}
+lem_eqNat_reflexive ::: x:CF -> CF&&{qed: x `eqNat` x}
 #-};;
 
 {-# CONTRACT
-lem_eqNat_reflexive2 ::: x:CF -> CF&&{qed: eqNat x x}
+lem_eqNat_reflexive2 ::: x:CF -> CF&&{qed: x `eqNat` x}
 #-};;
 
 {-# CONTRACT
-lem_add_Z_r ::: x:CF -> CF&&{qed: eqNat (add Zero x) (add x Zero)}
+lem_add_Z_r ::: x:CF -> CF&&{qed: (Zero `add` x) `eqNat` (x `add` Zero)}
 #-};;
 
 {-# CONTRACT
