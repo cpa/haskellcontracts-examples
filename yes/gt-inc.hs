@@ -17,10 +17,7 @@ import Lib.Arithmetic ;;
 inc x = Succ x;;
 
 {-# CONTRACT
-gt ::: x:CF -> {y: eqNat (Succ y) x} -> {z: z}
-#-};;
-{-# CONTRACT
-gtAux ::: x:CF -> {y: eqNat y x} -> {z: z}
+gt ::: x:CF -> (CF&&{y: eqNat (Succ y) x}) -> {z: z}
 #-};;
 
 {-# CONTRACT

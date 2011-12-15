@@ -18,9 +18,6 @@ lem x y = case x of {
 {-# CONTRACT
 gt ::: x:CF -> {y: eqNat (Succ y) x} -> {z: z}
 #-};;
-{-# CONTRACT
-gtAux ::: x:CF -> {y: eqNat y x} -> {z: z}
-#-};;
 
 -- If this even made sense, would still need lem to prove add, but add
 -- doesn't mention lem, and so lem would never be included in add's

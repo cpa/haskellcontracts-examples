@@ -1,18 +1,22 @@
 import Lib.BinaryTree ;;
 
+-- For 'height', which uses 'max', which uses 'ge' :P
 {-# CONTRACT
-ge  ::: CF -> CF -> CF
+ge ::: CF -> CF -> CF
 #-};;
-{-# CONTRACT
-ge_ ::: CF -> CF -> CF
-#-};;
-{-# CONTRACT
-max ::: CF -> CF -> CF
-#-};;
--- Could we weaken the precondition to '{x: isZero x `or` isSucc x}' ?
-{-# CONTRACT
-isZero ::: CF -> CF
-#-};;
+
 {-# CONTRACT
 height ::: CF -> CF
+#-};;
+
+{-# CONTRACT
+add ::: CF -> CF -> CF
+#-};;
+
+{-# CONTRACT
+size ::: CF -> CF
+#-};;
+
+{-# CONTRACT
+isLeaf ::: CF -> CF
 #-};;
