@@ -1,5 +1,4 @@
-import Lib.Prelude ;;
-import Lib.Arithmetic ;;
+import Lib.List ;;
            
 -- Higher order examples make clear the desire for richer contracts.
 -- The best we could do here is probably something like
