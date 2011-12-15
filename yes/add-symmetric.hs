@@ -104,6 +104,10 @@ lem_add_symmetric x y = case x of {
 add ::: CF -> CF -> CF
 #-};;
 
+{-# CONTRACT
+lem_eqNat_trans ::: CF -> CF -> CF -> CF
+#-} ;;
+
 -- using an irrelevant lemma causes divergence here!
 --
 -- UPDATE: not if you add 'CF' to the irrel lemma. the problem is that
