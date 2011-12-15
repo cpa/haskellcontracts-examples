@@ -39,9 +39,9 @@ le ::: CF -> CF -> CF
 
 -- This is necessary because we need 'not . null -> not . null' to
 -- have a usable inductive hypothesis.
-{-# CONTRACT
-risers ::: xs:(CF&&{xs: not (null xs)}) -> CF&&{xs: not (null xs)}
-#-};;
+-- {-# CONTRACT
+-- risers ::: xs:(CF&&{xs: not (null xs)}) -> CF&&{xs: not (null xs)}
+-- #-};;
 
 -- This is unnecessary but provable.
 -- {-# CONTRACT
@@ -50,6 +50,18 @@ risers ::: xs:(CF&&{xs: not (null xs)}) -> CF&&{xs: not (null xs)}
 
 -- This is not provable without the 'not (null x)' version. NB: no
 -- unrollings are needed.
+-- {-# CONTRACT
+-- risers ::: CF -> CF
+-- #-};;
+
+-- {-# CONTRACT
+-- risers ::: xs:CF -> { ys : not (null xs) `or` null ys }&&CF
+-- #-};;
+
+-- {-# CONTRACT
+-- risers ::: xs:CF -> { ys : (not (null xs) `and` not (null ys)) `or` (null xs `and` null ys) }&&CF
+-- #-};;
+
 {-# CONTRACT
-risers ::: xs:CF -> CF
+risers ::: xs:CF -> { ys : not (null xs) `implies` not (null ys) }&&CF
 #-};;
