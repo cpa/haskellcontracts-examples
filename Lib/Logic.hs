@@ -23,3 +23,8 @@ implies a b = case a of {
 ; False -> True
 ; True -> b
 };;
+
+ite c a b = case c of {
+; True -> a
+; False -> b
+};;

@@ -31,6 +31,9 @@ data Lemma
    deriving Show
    ;;
 
+-- Composition
+o f g x = f (g x) ;;
+
 {-# SKIP #-}
 using :: a -> Lemma -> a
 e `using` lem = case lem of {
