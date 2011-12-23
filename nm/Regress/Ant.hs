@@ -66,7 +66,10 @@ place x ys = case ys of {
 --
 -- don't work ???  Do we need a contract for 'o'?  It' not
 -- inductive ...
-shortest xs = foldr1 shorter (map path (permutations xs)) ;;
+
+--shortest xs = foldr1 shorter (map path (permutations xs)) ;;
+
+shortest = foldr1 shorter `o` map path `o` permutations ;;
 shorter x y = ite (length x `lt` length y) x y ;;
 
 {-# CONTRACT
@@ -74,6 +77,10 @@ shortest ::: CF -> CF
 #-};;
 {-# CONTRACT
 shorter ::: CF -> CF -> CF
+#-};;
+
+{-# CONTRACT
+o ::: (CF -> CF) -> (CF -> CF) -> CF -> CF
 #-};;
 
 {-# CONTRACT
