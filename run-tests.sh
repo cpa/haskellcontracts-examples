@@ -23,9 +23,15 @@ run-test () {
     # z3 processes with us as parent?
     killall --user `whoami` z3 &>/dev/null
 
+
+    t () { date +%s.%N; }
+
+    t_start=`t`
     "$egsDir"/timeout.sh $TIMEOUT "$CHECK" "$test" $OPTIONS -i "$egsDir" # --engine vampire32 # --engine z3
     ret=$?
-    printf "%-50s" "$test: "
+    t_end=`t`
+    t_delta=$(echo "$t_end - $t_start" | bc -l)
+    printf "%-45s %6.2f " "$test: " $t_delta
     if [[ $ret -eq 0 ]]; then
         echo $passMsg
     # timeout.sh returns 124 on timeout
