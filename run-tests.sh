@@ -12,6 +12,8 @@ OPTIONS=${OPTIONS:-"-q -k"}
 # Kill the whole testing process on Ctrl-C
 trap 'exit 1' INT
 
+comment () { echo "# $@"; }
+
 # Run a test and report results
 run-test () {
     test="$1"
@@ -31,7 +33,7 @@ run-test () {
     ret=$?
     t_end=`t`
     t_delta=$(echo "$t_end - $t_start" | bc -l)
-    printf "%-45s %6.2f " "$test: " $t_delta
+    printf "%-45s, %6.2f, " "$test" $t_delta
     if [[ $ret -eq 0 ]]; then
         echo $passMsg
     # timeout.sh returns 124 on timeout
@@ -51,13 +53,13 @@ skip-tc-temps () {
 }
 
 main () {
-    echo "Exit codes:"
-    echo "  Equinox: 1 = \"Satisfiable\""
-    echo "  Z3: 1 = error"
+    comment "Exit codes:"
+    comment "  Equinox: 1 = \"Satisfiable\""
+    comment "  Z3: 1 = error"
     echo
 
-    echo Running tests hoped to pass \(unsatisfiable\)
-    echo ===========================================
+    comment Running tests hoped to pass \(unsatisfiable\)
+    comment ===========================================
     echo
     for f in `skip-tc-temps "$egsDir"/yes`; do
         run-test "$f" "passed" "TIMED OUT"
@@ -65,8 +67,8 @@ main () {
 
     # HACK
     echo
-    echo ... including tests needing -u 1
-    echo ================================
+    comment ... including tests needing -u 1
+    comment ================================
     echo
     (
     OPTIONS="$OPTIONS -u 1"
@@ -76,8 +78,8 @@ main () {
     )
 
     echo
-    echo Running tests hoped to fail \(satisfiable\)
-    echo =========================================
+    comment Running tests hoped to fail \(satisfiable\)
+    comment =========================================
     echo
     for f in `skip-tc-temps "$egsDir"/no`; do
         run-test "$f" "PASSED" "timed out"
@@ -122,8 +124,8 @@ if [[ ! -x "$CHECK" ]]; then
     usage
 fi
 
-echo TIMEOUT = $TIMEOUT
-echo OPTIONS = $OPTIONS
+comment TIMEOUT = $TIMEOUT
+comment OPTIONS = $OPTIONS
 case $1 in
     all) main;;
     just) run-test "$2" "passed" "timed out";;
