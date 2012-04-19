@@ -7,8 +7,8 @@ run time on the same test varied by ~5 seconds.
 
 The refinement translations are
 
-  [| e ::: {x|p} |]+ = min(e) /\ min(p[e/x]) -> (e /= unr -> memP)
-  [| e ::: {x|p} |]- = min(e) -> min(p[e/x]) /\ (e /= unr -> memM)
+    [| e ::: {x|p} |]+ = min(e) /\ min(p[e/x]) -> (e /= unr -> memP)
+    [| e ::: {x|p} |]- = min(e) -> min(p[e/x]) /\ (e /= unr -> memM)
 
 and here I'm varying the membership checks (memP and memM).
 
