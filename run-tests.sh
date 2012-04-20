@@ -7,7 +7,7 @@ egsDir="$(dirname "$0")"
 # haskellcontracts repo.
 CHECK=${CHECK:-$egsDir/../src/hcc}
 TIMEOUT=${TIMEOUT:-10}
-OPTIONS=${OPTIONS:-"-q -k"}
+OPTIONS=${OPTIONS:-"-q"}
 
 # Kill the whole testing process on Ctrl-C
 trap 'exit 1' INT
