@@ -1,0 +1,45 @@
+# TIMEOUT = 100
+# OPTIONS = -q --no-min
+# Exit codes:
+#   Equinox: 1 = "Satisfiable"
+#   Z3: 1 = error
+
+# Running tests hoped to pass (unsatisfiable)
+# ===========================================
+
+./yes/add-and-mult-nonZero.hs                , 100.04, TIMED OUT
+./yes/add-is-cf.hs                           , 100.01, TIMED OUT
+./yes/add-is-cf-to-cf-to-cf.hs               ,   1.15, passed
+./yes/add-mult-factorial.hs                  , 100.03, TIMED OUT
+./yes/add-symmetric.hs                       , 100.01, TIMED OUT
+./yes/bintree-eq-is-cf2.hs                   ,   0.45, passed
+./yes/bintree-height-is-cf-to-cf.hs          , 100.01, TIMED OUT
+./yes/bintree-size-is-cf-to-cf.hs            ,   7.80, passed
+./yes/crash-on-wrong-nat.hs                  ,   0.81, passed
+./yes/eqNat.hs                               , 100.03, TIMED OUT
+./yes/even-odd-mutual.hs                     ,  12.16, passed
+./yes/gt-inc.hs                              , 100.03, TIMED OUT
+./yes/id-is-cf.hs                            ,   0.10, FAILED WITH EXIT CODE 1
+./yes/id-universal-lemma-hack.hs             , 100.01, TIMED OUT
+./yes/loop.hs                                ,   0.07, passed
+./yes/map.hs                                 , 100.01, TIMED OUT
+./yes/mult-is-cf-to-cf-to-cf.hs              ,  14.71, passed
+./yes/predicate-on-constant-function.hs      ,  25.05, passed
+./yes/recursion-using-both-arguments.hs      ,   1.64, passed
+./yes/reverse-is-cf3.hs                      ,   1.61, passed
+
+# ... including tests needing -u 1
+# ================================
+
+./yes-u1/needs-unrolling.hs                  ,   2.72, passed
+
+# Running tests hoped to fail (satisfiable)
+# =========================================
+
+./no/add-and-mult-nonZero.hs                 , 100.01, timed out
+./no/bad-is-cf.hs                            ,   0.06, FAILED WITH EXIT CODE 1
+./no/const-bad-is-cf-to-cf.hs                , 100.01, timed out
+./no/crash-on-wrong-nat.hs                   , 100.01, timed out
+./no/mult-gt.hs                              , 100.01, timed out
+./no/mult-gt-unnested.hs                     , 100.02, timed out
+./no/mutual-recursion-bug.hs                 ,   0.06, FAILED WITH EXIT CODE 1
