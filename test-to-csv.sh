@@ -5,6 +5,6 @@
 
 sed -e '/^#/d' \
     -e '/^[ \t]*$/d' \
-    -e 's/FAILED WITH EXIT CODE 1/Fail/' \
-    -e 's/passed/Pass/' \
-    -e 's/TIMED OUT/Time/' \
+    -e 's/FAILED WITH EXIT CODE 1/Fail/i' \
+    -e 's/passed/Pass/i' \
+    -e 's/TIMED OUT/Time/i' \
